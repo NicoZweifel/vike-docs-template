@@ -13,14 +13,14 @@ export function TableOfContents({
 
   return (
     <nav {...props} className={cn('flex px-2 py-4 flex-col', className)}>
-      <p className={'font-bold text-gray-900 dark:text-gray-100'}>
+      <p className={'font-bold text-neutral-900 dark:text-neutral-100'}>
         On this page
       </p>
       {frontmatter.headings.map((x) => (
         <a
           key={x.title}
           className={
-            'whitespace-nowrap group py-0.5 items-center text-gray-600 hover:text-gray-900 dark:hover:text-gray-300 dark:text-gray-100 rounded-lg font-semibold'
+            'whitespace-nowrap group py-0.5 items-center text-neutral-600 hover:text-neutral-900 dark:hover:text-neutral-300 dark:text-neutral-100 rounded-lg font-semibold'
           }
           style={{
             marginLeft: `${Math.max(
@@ -28,7 +28,7 @@ export function TableOfContents({
               Number(8 ?? 0) * Math.max(x.level - lowest + 1, 0)
             )}px`,
           }}
-          href={`#${x.title.toLowerCase()}`}
+          href={`#${x.title.replaceAll(' ', '-').toLowerCase()}`}
         >
           {x.title}
         </a>

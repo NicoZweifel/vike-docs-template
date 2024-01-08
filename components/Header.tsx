@@ -11,7 +11,7 @@ export function Header({ className, ...props }: ComponentProps<'header'>) {
     <header
       {...props}
       className={cn(
-        'fixed flex top-0 w-full backdrop-blur flex-none border-b grow justify-center z-10 ',
+        'fixed bg-neutral-100/60 dark:bg-neutral-950/40 flex top-0 w-full backdrop-blur flex-none border-b border-neutral-300/40 dark:border-neutral-900/60 grow justify-center z-10 ',
         className
       )}
     >

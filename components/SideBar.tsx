@@ -16,7 +16,7 @@ export function SideBar({ className, ...props }: ComponentProps<'nav'>) {
           {x.length > 1 && (
             <p
               className={
-                'text-lg font-bold text-gray-900 dark:text-gray-100 py-1 pt-3 px-2'
+                'text-lg font-bold text-neutral-900 dark:text-neutral-100 py-1 pt-3 px-2'
               }
             >
               {x.replaceAll('/', ' ').trim()}
@@ -28,7 +28,7 @@ export function SideBar({ className, ...props }: ComponentProps<'nav'>) {
               <a
                 key={route}
                 className={
-                  'whitespace-nowrap py-1 px-2 flex items-center hover:bg-gray-100 rounded text-gray-600 hover:text-gray-900 dark:text-gray-100 dark:hover:text-gray-300 font-semibold'
+                  'whitespace-nowrap py-1 px-2 flex items-center hover:bg-neutral-100/80 dark:hover:bg-neutral-900/60 rounded text-neutral-600 hover:text-neutral-900 dark:text-neutral-100 dark:hover:text-neutral-300 font-semibold'
                 }
                 href={route}
               >

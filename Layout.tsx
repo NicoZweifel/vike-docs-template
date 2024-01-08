@@ -11,7 +11,7 @@ export function Layout({ children }: { children: VNode }) {
   return (
     <div
       className={
-        'min-h-screen min-w-full flex justify-center bg-white dark:bg-black dark:text-white'
+        'min-h-screen min-w-full flex justify-center bg-white dark:bg-neutral-950 dark:text-white'
       }
     >
       <Header />

@@ -5,7 +5,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "format": "prettier **/*.{js,ts,tsx,css,json,md,mdx} --write",
+    "format": "prettier **/*.{cjs,js,ts,tsx,css,json,md,mdx} --write",
     "lint": "eslint **/*.{ts,tsx,mdx} --fix"
   },
   "dependencies": {

@@ -37,7 +37,9 @@ export const DarkModeToggle = ({
           setTheme({ mode: theme.mode === 'dark' ? 'light' : 'dark' });
         }}
       />
-      <div class="w-9 h-5 bg-neutral-300 peer-focus:outline-none peer-checked:bg-neutral-500 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[6px] after:start-[2px] after:bg-white after:border-neutral-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all " />
+      <div
+        className={`w-9 h-5 bg-neutral-300 peer-focus:outline-none peer-checked:bg-neutral-800 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[6px] after:start-[2px] after:bg-neutral-100 after:rounded-full after:h-4 after:w-4 after:transition-all `}
+      />
     </label>
   );
 };

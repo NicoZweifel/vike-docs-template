@@ -24,6 +24,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+
 module.exports= {
     "parser": "@typescript-eslint/parser",
     "root": true,
@@ -62,8 +63,7 @@ module.exports= {
             // eslint-plugin-preact interprets this as "h.createElement",
             // however we only care about marking h() as being a used variable.
             pragma: 'h',
-            // We use "react 16.0" to avoid pushing folks to UNSAFE_ methods.
-            version: '16.0'
+            version: '18.0'
         }
     },
 
@@ -110,5 +110,14 @@ module.exports= {
          */
         'react-hooks/rules-of-hooks': 2,
         'react-hooks/exhaustive-deps': 1,
-    }
+    },
+    overrides: [
+        {
+            files: ['*.mdx'],
+            extends: 'plugin:mdx/recommended',
+            settings: {
+                "mdx/code-blocks": true,
+            }
+        }
+    ],
 };

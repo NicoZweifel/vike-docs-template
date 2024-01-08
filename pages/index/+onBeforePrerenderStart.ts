@@ -13,18 +13,32 @@ async function onBeforePrerenderStart() {
       path: x.frontmatter.path,
     }));
 
-  return docs.map((x) => {
-    const pageProps = {
-      ...x,
-      navItems,
-      name: options.name,
-    };
-
-    return {
-      url: x.frontmatter.route,
+  return [
+    {
+      url: '/',
       pageContext: {
-        pageProps,
+        pageProps: {
+          ...(docs.find(
+            (x) => x.frontmatter.route === '/' || x.frontmatter.route === ''
+          ) ?? docs[0]),
+          navItems,
+          name: options.name,
+        },
       },
-    };
-  });
+    },
+    ...docs.map((x) => {
+      const pageProps = {
+        ...x,
+        navItems,
+        name: options.name,
+      };
+
+      return {
+        url: x.frontmatter.route,
+        pageContext: {
+          pageProps,
+        },
+      };
+    }),
+  ];
 }

@@ -2,6 +2,7 @@ import { usePageContext } from '../renderer/usePageContext';
 import { DarkModeToggle } from './DarkModeToggle';
 import { ComponentProps } from 'preact';
 import { cn } from '../utils/cn';
+import { Image } from '@unpic/preact';
 
 export function Header({ className, ...props }: ComponentProps<'header'>) {
   const {
@@ -18,7 +19,10 @@ export function Header({ className, ...props }: ComponentProps<'header'>) {
       <nav
         className={'p-2 flex flex-row container items-stretch justify-between'}
       >
-        <p className={'text-lg font-bold'}>{name}</p>
+        <div className={'flex flex-row place-items-center gap-2'}>
+          <Image src={'/vite.svg'} layout={'fixed'} height={20} width={20} />
+          <p className={'text-lg font-bold'}>{name}</p>
+        </div>
         <DarkModeToggle />
       </nav>
     </header>

@@ -37,18 +37,24 @@ Configure the name of the project and other settings like `rehype`/`remark` plug
 ### Options
 
 ```ts
-const options:BundleMDXOptions={
-    name: 'vike-docs-template',
-    pattern: '**/*.mdx',
-    ..., // other options
-    mdxBundlerOptions: {
-        mdxOptions: {
-            jsxImportSource: 'preact',
-            remarkPlugins: [/* add or change remark plugins*/],
-            rehypePlugins: [/* add or change rehype plugins*/],
-        }
-    }
-}
+const options: BundleMDXOptions = {
+  name: 'vike-docs-template',
+  pattern: '**/*.mdx',
+  // other options
+  mdxBundlerOptions: {
+    mdxOptions: {
+      jsxImportSource: 'preact',
+      remarkPlugins: [
+        /* add or change remark plugins*/
+      ],
+      rehypePlugins: [
+        /* add or change rehype plugins*/
+      ],
+    },
+  },
+};
+
+export default options;
 ```
 
 ### MDX Components
@@ -56,7 +62,7 @@ const options:BundleMDXOptions={
 Add global mdx components in mdxComponents.tsx
 
 ```ts
-export  const mdxComponents:MDXComponents={
-  ... // add or change components
-}
+export const mdxComponents: MDXComponents = {
+  // add or change components
+};
 ```

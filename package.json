@@ -6,10 +6,11 @@
     "build": "vite build",
     "preview": "vite preview",
     "format": "prettier **/*.{js,ts,tsx,css,json,md,mdx} --write",
-    "lint": "eslint **/*.{ts,tsx} --fix"
+    "lint": "eslint **/*.{ts,tsx,mdx} --fix"
   },
   "dependencies": {
     "@preact/signals": "^1.2.2",
+    "@unpic/preact": "^0.0.36",
     "clsx": "^2.1.0",
     "esbuild": "^0.19.11",
     "mdast-util-mdx": "^3.0.0",
@@ -40,6 +41,7 @@
     "autoprefixer": "^10.4.16",
     "eslint": "^8.56.0",
     "eslint-plugin-compat": "^4.2.0",
+    "eslint-plugin-mdx": "^2.3.2",
     "eslint-plugin-prettier": "^5.1.2",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",

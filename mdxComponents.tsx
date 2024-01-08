@@ -2,6 +2,7 @@ import { MDXComponents } from 'mdx/types';
 import { H } from './components/H';
 import { cn } from './utils/cn';
 import { Link } from './components/Link';
+import { Image } from '@unpic/preact';
 
 export const mdxComponents: MDXComponents = {
   ...Object.fromEntries(
@@ -16,6 +17,7 @@ export const mdxComponents: MDXComponents = {
     <ul {...p} className={cn(p.className, 'py-1 list-disc list-inside')} />
   ),
   a: (p) => <Link {...p} />,
+  img: (p) => <Image layout={'fullWidth'} {...p} />,
 };
 
 export default mdxComponents;

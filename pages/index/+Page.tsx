@@ -1,6 +1,6 @@
-import { getMDXComponent } from "mdx-bundler/client";
-import { usePageContext } from "../../renderer/usePageContext";
-import mdxComponents from "../../mdxComponents";
+import { getMDXComponent } from 'mdx-bundler/client';
+import { usePageContext } from '../../renderer/usePageContext';
+import mdxComponents from '../../mdxComponents';
 
 export function Page() {
   const {

@@ -4,9 +4,12 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "format": "prettier **/*.{js,ts,tsx,css.ts,json,md,mdx} --write",
+    "lint": "eslint **/*.{ts,tsx} --fix"
   },
   "dependencies": {
+    "@preact/signals": "^1.2.2",
     "clsx": "^2.1.0",
     "esbuild": "^0.19.11",
     "mdast-util-mdx": "^3.0.0",
@@ -32,13 +35,19 @@
     "@types/mdx": "^2.0.10",
     "@types/node": "^20.10.6",
     "@types/unist": "^3.0.2",
+    "@typescript-eslint/eslint-plugin": "^6.18.0",
+    "@typescript-eslint/parser": "^6.18.0",
     "autoprefixer": "^10.4.16",
     "eslint": "^8.56.0",
-    "eslint-config-preact": "^1.3.0",
+    "eslint-plugin-prettier": "^5.1.2",
     "glob": "^10.3.10",
+    "prettier": "^3.1.1",
     "typescript": "^5.3.3",
     "vike": "^0.4.153",
     "vite": "^4.5.1",
-    "vite-plugin-full-reload": "^1.1.0"
+    "vite-plugin-full-reload": "^1.1.0",
+    "eslint-plugin-compat": "^4.2.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0"
   }
 }

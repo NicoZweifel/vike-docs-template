@@ -1,13 +1,13 @@
-import resolveConfig from "tailwindcss/resolveConfig";
+import resolveConfig from 'tailwindcss/resolveConfig';
 
 const config = resolveConfig({
-  darkMode: "class",
+  darkMode: 'class',
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/Header.tsx",
-    "./Layout.tsx",
-    "./mdxComponents.tsx",
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/Header.tsx',
+    './Layout.tsx',
+    './mdxComponents.tsx',
   ],
   theme: {
     extend: {},

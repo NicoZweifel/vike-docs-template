@@ -17,3 +17,13 @@ A minimalistic template to easily deploy customizable mdx pages.
 ## Preview build output
 
 `pnpm preview`
+
+## Format
+
+`pnpm format`
+
+## Lint
+
+Will format as well
+
+`pnpm lint`

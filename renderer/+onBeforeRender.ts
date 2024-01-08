@@ -1,7 +1,7 @@
-import { PageContext } from "vike/types";
+import { PageContext } from 'vike/types';
 
-import { getDocs } from "../utils/getDocs";
-import options from "../options";
+import { getDocs } from '../utils/getDocs';
+import options from '../options';
 
 export { onBeforeRender };
 

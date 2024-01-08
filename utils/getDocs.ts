@@ -1,4 +1,4 @@
-import bundleMDX from "./bundleMDX";
-import options from "../options";
+import bundleMDX from './bundleMDX';
+import options from '../options';
 
 export const getDocs = () => bundleMDX(options);

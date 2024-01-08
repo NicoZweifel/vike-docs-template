@@ -1,10 +1,11 @@
-import { VNode } from "preact";
-import { DocHeading } from "../types/docHeading";
+import { VNode } from 'preact';
+import { DocHeading } from '../types/docHeading';
 
 export type { PageProps };
 
 // https://vike.dev/pageContext#typescript
 declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace Vike {
     interface PageContext {
       Page: Page;
@@ -22,7 +23,7 @@ declare global {
 
 type Page = (pageProps: PageProps) => VNode;
 
-type FrontMatterKeys = "title" | "path" | "route" | "description";
+type FrontMatterKeys = 'title' | 'path' | 'route' | 'description';
 
 type PageProps = {
   name: string;

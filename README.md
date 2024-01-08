@@ -1,2 +1,3 @@
 # vike-docs-template
- A template for easily deploying customizable mdx pages.
+
+A minimalistic template to easily deploy customizable mdx pages.

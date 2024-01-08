@@ -1,0 +1,62 @@
+---
+title: Setup
+---
+
+This template keeps use-case specific configuration to a minimum.
+
+### Styling
+
+Adjusting styles and components as needed is highly recommended.
+
+#### Theming
+
+Light/Dark mode with a class based approach works but theme colors are not configured.
+
+#### Tailwind
+
+Extend the `tailwind.config` or replace it with another styling solution like `vanilla-extract` or `stylex`.
+
+#### Global CSS
+
+Add global css to `index.css`
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* add css */
+
+.example {
+  background: black;
+}
+```
+
+Configure the name of the project and other settings like `rehype`/`remark` plugins in `options.ts`.
+
+### Options
+
+```ts
+const options:BundleMDXOptions={
+    name: 'vike-docs-template',
+    pattern: '**/*.mdx',
+    ..., // other options
+    mdxBundlerOptions: {
+        mdxOptions: {
+            jsxImportSource: 'preact',
+            remarkPlugins: [/* add or change remark plugins*/],
+            rehypePlugins: [/* add or change rehype plugins*/],
+        }
+    }
+}
+```
+
+### MDX Components
+
+Add global mdx components in mdxComponents.tsx
+
+```ts
+export  const mdxComponents:MDXComponents={
+  ... // add or change components
+}
+```

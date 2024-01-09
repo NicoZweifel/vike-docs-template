@@ -25,14 +25,32 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: theme('colors.neutral.950');
+    background: theme('colors.neutral.100');
+    border: 1px none theme('colors.neutral.300');
+    border-left-style: solid;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: theme('colors.neutral.800/80');
+  background: theme('colors.neutral.200');
+  border: 1px solid theme('colors.neutral.300');
   border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: theme('colors.neutral.700/60');
+  background: theme('colors.neutral.300');
 }
+
+:is(.dark) > ::-webkit-scrollbar-track {
+    background: theme('colors.neutral.950');
+    border: 1px none theme('colors.neutral.900');
+    border-left-style: solid;
+}
+
+:is(.dark) >  ::-webkit-scrollbar-thumb {
+    background: theme('colors.neutral.900');
+    border: 1px solid theme('colors.neutral.800');
+    border-radius: 8px;
+  }
+
+
+

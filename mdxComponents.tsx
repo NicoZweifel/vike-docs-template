@@ -79,7 +79,7 @@ export const mdxComponents: MDXComponents = {
   pre: (p) => (
     <pre
       {...p}
-      className={cn('my-1 rounded border border-neutral-700/80', p.className)}
+      className={cn('my-1 rounded border border-neutral-700/40', p.className)}
     />
   ),
   p: (p) => <p {...p} className={cn('text-base', p.className)} />,
@@ -90,7 +90,7 @@ export const mdxComponents: MDXComponents = {
     <Link {...p} className={cn('inline-block', p.className)}>
       <button
         className={
-          'bg-neutral-100/80 hover:bg-neutral-200/80 text-sm flex text-neutral-800 dark:text-neutral-200 items-center gap-1 flex-row rounded-sm px-0.5 dark:bg-neutral-800/80 dark:hover:bg-neutral-700/80'
+          'text-neutral-900/80 hover:text-neutral-700/80 dark:text-neutral-100/80 dark:hover:text-neutral-200/80 flex text-neutral-800 dark:text-neutral-200 items-center gap-1 flex-row rounded-sm px-0.5 '
         }
       >
         {(p as { children: ComponentChildren }).children}
@@ -106,7 +106,7 @@ export const mdxComponents: MDXComponents = {
     <td
       {...p}
       className={cn(
-        'p-2 font-semibold border-b border-neutral-700/80',
+        'p-2 font-semibold border-b border-neutral-300/80 dark:border-neutral-700/80',
         p.className
       )}
     />
@@ -114,7 +114,10 @@ export const mdxComponents: MDXComponents = {
   td: (p) => (
     <td
       {...p}
-      className={cn('p-2 border-b border-neutral-800/80', p.className)}
+      className={cn(
+        'p-2 border-b border-neutral-200/80 dark:border-neutral-800/80',
+        p.className
+      )}
     />
   ),
   img: ({ className, ...p }) => (

@@ -65,7 +65,7 @@ const Node = ({
       <div
         className={cn(
           name.length > 0
-            ? 'ml-1 pl-2 border-l border-neutral-300/60 dark:border-neutral-800/80'
+            ? 'ml-1 pl-2 border-l border-neutral-300/60 dark:border-neutral-800/40'
             : undefined,
           'flex flex-col gap-2'
         )}

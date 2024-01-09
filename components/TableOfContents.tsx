@@ -19,7 +19,7 @@ export function TableOfContents({
         <List size={16} />
         <p
           className={
-            'font-bold whitespace-nowrap text-neutral-900 dark:text-neutral-100'
+            'font-bold shrink-0 text-neutral-900 dark:text-neutral-100'
           }
         >
           On this page

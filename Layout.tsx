@@ -18,9 +18,9 @@ export function Layout({ children }: { children: VNode }) {
             scrollbarGutter: 'stable',
             maxHeight: `calc(100vh - 2.75rem)`,
           }}
-          className={'sticky top-11 overflow-y-auto hidden lg:flex'}
+          className={'sticky top-11 shrink-0 overflow-y-auto hidden lg:flex'}
         />
-        <div className={'px-2 py-4 flex flex-col grow gap-1'}>
+        <div className={'px-2 py-4 flex shrink-1 flex-col grow gap-1'}>
           <PageHeader />
           <main className={'flex flex-col gap-2'}>{children}</main>
         </div>
@@ -29,7 +29,9 @@ export function Layout({ children }: { children: VNode }) {
             scrollbarGutter: 'stable',
             maxHeight: `calc(100vh - 2.75rem)`,
           }}
-          className={'sticky top-11 overflow-y-auto hidden sm:flex'}
+          className={
+            'sticky top-11 shrink-0 overflow-x-hidden overflow-y-auto hidden sm:flex'
+          }
         />
       </div>
     </div>

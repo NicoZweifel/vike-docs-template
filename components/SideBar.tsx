@@ -8,7 +8,6 @@ export function SideBar({ className, ...props }: ComponentProps<'nav'>) {
   } = usePageContext();
 
   const groups = new Set(navItems.map((x) => x.path).sort());
-  console.log(navItems);
   return (
     <nav {...props} className={cn('flex px-2 py-4 flex-col gap-1', className)}>
       {[...groups.values()].map((x) => {

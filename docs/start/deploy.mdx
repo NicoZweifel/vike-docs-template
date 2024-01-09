@@ -1,8 +1,41 @@
 ---
 title: Deploy
-description: Easy deployment to common cloud providers
+description: Deployment to common cloud providers
 ---
+
+The example docs are hosted on [Cloudflare pages](https://pages.cloudflare.com/).
+
+## Cloudflare Pages
+
+- Connect `Cloudflare` with `Github`.
+- Create a new Pages project with the following Build & deployment settings:
+
+| Key                    | Value                                                          |
+| ---------------------- | -------------------------------------------------------------- |
+| Build command          | `npx pnpm i --store=node_modules/.pnpm-store && npm run build` |
+| Build output directory | `/dist/client`                                                 |
+| Root directory         | `/`                                                            |
+
+It should look like this on `Cloudflare`:
+
+<img
+  src="/cloudflare_pages_settings.png"
+  width={800}
+  alt="cloudflare_pages_settings"
+/>
+
+`pnpm` is used in this project, so we'll have to bypass `npm i` on `Cloudflare` by setting an environment variable in the pages project:
+
+```bash
+NPM_FLAGS=--version
+```
+
+### Done!
+
+Deploy by pushing your commits to `Github`!
+
+## Other Providers
 
 Deploying to most cloud providers is a matter of a few clicks.
 
-Check the `DEPLOY` section of `vike`'s [docs](https://vike.dev/github-pages).
+Check the `DEPLOY` section of `vike`'s [docs](https://vike.dev/github-pages) for more information about hosting providers.

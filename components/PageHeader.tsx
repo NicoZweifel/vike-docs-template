@@ -1,4 +1,4 @@
-import { usePageContext } from '../renderer/usePageContext';
+import { usePageContext } from '../context/PageContext';
 import { ComponentProps } from 'preact';
 import { cn } from '../utils/cn';
 

@@ -1,4 +1,4 @@
-import { PageContextProvider } from './usePageContext';
+import { PageContextProvider } from '../context/PageContext';
 import Layout from '../Layout';
 
 export { PageShell };

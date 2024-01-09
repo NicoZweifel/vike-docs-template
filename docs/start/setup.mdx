@@ -1,42 +1,12 @@
 ---
 title: Setup
-description: Extending the configuration
+description: Changing and extending the configuration
 order: 1
 ---
 
-This template keeps use-case specific configuration to a minimum.
+## Options
 
-### Styling
-
-Adjusting styles and components as needed is highly recommended.
-
-#### Theming
-
-Light/Dark mode with a class based approach works but theme colors are not configured.
-
-#### Tailwind
-
-Extend the `tailwind.config` or replace it with another styling solution like `vanilla-extract` or `stylex`.
-
-#### Global CSS
-
-Add global css to `index.css`
-
-```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* add css */
-
-.example {
-  background: black;
-}
-```
-
-Configure the name of the project and other settings like `rehype`/`remark` plugins in `options.ts`.
-
-### Options
+Configure the name of the project and other settings like `rehype`/`remark`.
 
 ```ts
 const options: BundleMDXOptions = {
@@ -57,6 +27,39 @@ const options: BundleMDXOptions = {
 };
 
 export default options;
+```
+
+## Bring your own!
+
+Use-case specific configurations and implementations are kept to a minimum. Adding your own solutions is recommended.
+
+### Styling
+
+Adjusting styles and components as needed is required to implement a custom style or theme.
+Check out [`vanilla-extract`](https://vanilla-extract.style/) or [`styleX`](https://stylexjs.com/) if you desire a more type-safe, maintainable and scalable styling solution.
+
+#### Theming
+
+Light/Dark mode with a class based approach works but theme colors are not configured.
+
+#### Tailwind
+
+Extend the `tailwind.config` or replace as much as required with another styling solution, some recommendations have been made [above](#styling).
+
+#### Global CSS
+
+Add global css to `index.css`
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* add css */
+
+.example {
+  background: black;
+}
 ```
 
 ### MDX Components

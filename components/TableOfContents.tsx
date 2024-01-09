@@ -1,4 +1,4 @@
-import { usePageContext } from '../renderer/usePageContext';
+import { usePageContext } from '../context/PageContext';
 import { ComponentProps } from 'preact';
 import { cn } from '../utils/cn';
 import { sluggifyTitle } from '../utils/sluggifyTitle';
@@ -17,7 +17,11 @@ export function TableOfContents({
     <nav {...props} className={cn('flex px-2 py-4 flex-col gap-1', className)}>
       <div className={'flex flex-row items-center gap-1'}>
         <List size={16} />
-        <p className={'font-bold text-neutral-900 dark:text-neutral-100'}>
+        <p
+          className={
+            'font-bold whitespace-nowrap text-neutral-900 dark:text-neutral-100'
+          }
+        >
           On this page
         </p>
       </div>

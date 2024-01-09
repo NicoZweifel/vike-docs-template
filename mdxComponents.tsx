@@ -1,6 +1,6 @@
 import { MDXComponents } from 'mdx/types';
 import { cn } from './utils/cn';
-import { Link } from './components/Link';
+import { Link } from './components';
 import { Image } from '@unpic/preact';
 
 import { ExternalLink } from 'react-feather';
@@ -24,7 +24,7 @@ const getNodeText = (node: ComponentChildren): string => {
   return '';
 };
 
-export function H({
+function H({
   level,
   className,
   children,
@@ -67,7 +67,9 @@ export const mdxComponents: MDXComponents = {
       `h${x}`,
       (p) => (
         <H
-          className={'pt-3 scroll-mt-10 hover:text-neutral-300'}
+          className={
+            'pt-3 scroll-mt-10 hover:text-neutral-700 dark:hover:text-neutral-300'
+          }
           {...p}
           level={x}
         />
@@ -77,12 +79,12 @@ export const mdxComponents: MDXComponents = {
   pre: (p) => (
     <pre
       {...p}
-      className={cn('py-1 rounded border border-neutral-700/80', p.className)}
+      className={cn('my-1 rounded border border-neutral-700/80', p.className)}
     />
   ),
-  p: (p) => <p {...p} className={cn('py-1', p.className)} />,
+  p: (p) => <p {...p} className={cn('text-base', p.className)} />,
   ul: (p) => (
-    <ul {...p} className={cn('py-2 list-disc list-inside', p.className)} />
+    <ul {...p} className={cn('my-1 list-disc list-inside', p.className)} />
   ),
   a: (p) => (
     <Link {...p} className={cn('inline-block', p.className)}>
@@ -99,8 +101,26 @@ export const mdxComponents: MDXComponents = {
       </button>
     </Link>
   ),
-  img: (p) => (
-    <Image layout={'fullWidth'} {...p} className={cn('py-2', p.className)} />
+  table: (p) => <table {...p} className={cn('mt-1 mb-3', p.className)} />,
+  th: (p) => (
+    <td
+      {...p}
+      className={cn(
+        'p-2 font-semibold border-b border-neutral-700/80',
+        p.className
+      )}
+    />
+  ),
+  td: (p) => (
+    <td
+      {...p}
+      className={cn('p-2 border-b border-neutral-800/80', p.className)}
+    />
+  ),
+  img: ({ className, ...p }) => (
+    <div className={cn('my-2', className)}>
+      <Image layout={'fullWidth'} {...p} />
+    </div>
   ),
 };
 

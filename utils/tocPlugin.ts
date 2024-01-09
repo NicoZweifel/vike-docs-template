@@ -1,4 +1,4 @@
-import { DocHeading } from '../types/docHeading';
+import { DocHeading } from '../types';
 import * as unified from 'unified';
 import * as unist from 'unist';
 import { MdxJsxTextElement, mdxToMarkdown } from 'mdast-util-mdx';

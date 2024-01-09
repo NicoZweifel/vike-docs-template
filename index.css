@@ -19,3 +19,20 @@
     Segoe UI Symbol,
     Noto Color Emoji;
 }
+
+::-webkit-scrollbar {
+  width: 14px;
+}
+
+::-webkit-scrollbar-track {
+  background: theme('colors.neutral.950');
+}
+
+::-webkit-scrollbar-thumb {
+  background: theme('colors.neutral.800/80');
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: theme('colors.neutral.700/60');
+}

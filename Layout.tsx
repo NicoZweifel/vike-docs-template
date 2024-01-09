@@ -1,11 +1,8 @@
 import './index.css';
 import 'prism-themes/themes/prism-vsc-dark-plus.css';
 
-import { PageHeader } from './components';
+import { PageHeader, TableOfContents, SideBar, Header } from './components';
 import { VNode } from 'preact';
-import { TableOfContents } from './components/TableOfContents';
-import { SideBar } from './components/SideBar';
-import { Header } from './components/Header';
 
 export function Layout({ children }: { children: VNode }) {
   return (
@@ -15,17 +12,25 @@ export function Layout({ children }: { children: VNode }) {
       }
     >
       <Header />
-      <div className={'flex flex-row container items-stretch pt-10'}>
-        <div className={'relative'}>
-          <SideBar className={'hidden lg:flex sticky top-10'} />
-        </div>
+      <div className={'flex flex-row container items-stretch pt-11'}>
+        <SideBar
+          style={{
+            scrollbarGutter: 'stable',
+            maxHeight: `calc(100vh - 2.75rem)`,
+          }}
+          className={'sticky top-11 overflow-y-auto hidden lg:flex'}
+        />
         <div className={'px-2 py-4 flex flex-col grow gap-1'}>
           <PageHeader />
-          <main>{children}</main>
+          <main className={'flex flex-col gap-2'}>{children}</main>
         </div>
-        <div className={'relative'}>
-          <TableOfContents className={'hidden sm:flex grow sticky top-10'} />
-        </div>
+        <TableOfContents
+          style={{
+            scrollbarGutter: 'stable',
+            maxHeight: `calc(100vh - 2.75rem)`,
+          }}
+          className={'sticky top-11 overflow-y-auto hidden sm:flex'}
+        />
       </div>
     </div>
   );

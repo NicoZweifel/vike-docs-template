@@ -1,7 +1,8 @@
 import { VNode } from 'preact';
-import { DocHeading } from '../types/docHeading';
+import { DocHeading } from './docHeading';
+import { NavItem } from './NavItem';
 
-export type { PageProps };
+export type { PageProps, DocHeading, NavItem };
 
 // https://vike.dev/pageContext#typescript
 declare global {
@@ -23,16 +24,11 @@ declare global {
 
 type Page = (pageProps: PageProps) => VNode;
 
-type FrontMatterKeys = 'title' | 'path' | 'route';
-type OptionalFrontMatterKeys = 'description' | 'order';
-
 type PageProps = {
   name: string;
   code: string;
-  frontmatter: Record<FrontMatterKeys, string> &
-    Partial<Record<OptionalFrontMatterKeys, string>> & {
-      headings: DocHeading[];
-    };
-  navItems: (Record<FrontMatterKeys, string> &
-    Partial<Record<OptionalFrontMatterKeys, string>>)[];
+  frontmatter: NavItem & {
+    headings: DocHeading[];
+  };
+  navItems: NavItem[];
 };

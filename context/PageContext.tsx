@@ -6,8 +6,7 @@ import { useContext } from 'preact/hooks';
 
 import type { PageContext } from 'vike/types';
 
-export { PageContextProvider };
-export { usePageContext };
+export { PageContextProvider, usePageContext };
 
 const Context = createContext<PageContext>(undefined as unknown as PageContext);
 

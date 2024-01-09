@@ -1,5 +1,5 @@
 import { getMDXComponent } from 'mdx-bundler/client';
-import { usePageContext } from '../../renderer/usePageContext';
+import { usePageContext } from '../../context/PageContext';
 import mdxComponents from '../../mdxComponents';
 
 export function Page() {
@@ -7,9 +7,5 @@ export function Page() {
     pageProps: { code },
   } = usePageContext();
   const Component = getMDXComponent(code);
-  return (
-    <div>
-      <Component components={mdxComponents} />
-    </div>
-  );
+  return <Component components={mdxComponents} />;
 }

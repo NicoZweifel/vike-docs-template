@@ -1,4 +1,4 @@
-import { usePageContext } from '../renderer/usePageContext';
+import { usePageContext } from '../context/PageContext';
 import { ComponentProps } from 'preact';
 
 export function Link(props: ComponentProps<'a'>) {

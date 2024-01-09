@@ -1,4 +1,4 @@
-import { usePageContext } from '../renderer/usePageContext';
+import { usePageContext } from '../context/PageContext';
 import { DarkModeToggle } from './DarkModeToggle';
 import { ComponentProps } from 'preact';
 import { cn } from '../utils/cn';

@@ -8,7 +8,7 @@ export function SideBar({ className, ...props }: ComponentProps<'nav'>) {
   } = usePageContext();
 
   const groups = new Set(navItems.map((x) => x.path).sort());
-
+  console.log(navItems);
   return (
     <nav {...props} className={cn('flex px-2 py-4 flex-col gap-1', className)}>
       {[...groups.values()].map((x) => {
@@ -26,7 +26,12 @@ export function SideBar({ className, ...props }: ComponentProps<'nav'>) {
             )}
             {navItems
               .filter((y) => y.path === x)
-              .sort((a, b) => a.title.localeCompare(b.title))
+              .sort((a, b) =>
+                a.order || b.order
+                  ? Number(a.order ?? Number.MAX_SAFE_INTEGER) -
+                    Number(b.order ?? -Number.MAX_SAFE_INTEGER)
+                  : a.title.localeCompare(b.title)
+              )
               .map(({ title, route }) => (
                 <a
                   key={route}

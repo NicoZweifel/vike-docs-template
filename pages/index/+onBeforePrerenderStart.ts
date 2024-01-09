@@ -11,6 +11,7 @@ async function onBeforePrerenderStart() {
       route: x.frontmatter.route,
       title: x.frontmatter.title,
       path: x.frontmatter.path,
+      order: x.frontmatter.order,
     }));
 
   return [

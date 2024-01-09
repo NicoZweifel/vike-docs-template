@@ -28,7 +28,7 @@ export function TableOfContents({
             'whitespace-nowrap flex flex-row gap-1 group py-0.5 items-center text-neutral-600 hover:text-neutral-900 dark:hover:text-neutral-300 dark:text-neutral-100 rounded-lg'
           }
           style={{
-            marginLeft: `${Math.max(0, 8 * Math.max(x.level - lowest, 0))}px`,
+            marginLeft: `${Math.max(0, 13 * Math.max(x.level - lowest, 0))}px`,
           }}
           href={`#${sluggifyTitle(x.title)}`}
         >

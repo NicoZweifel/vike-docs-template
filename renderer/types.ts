@@ -23,11 +23,16 @@ declare global {
 
 type Page = (pageProps: PageProps) => VNode;
 
-type FrontMatterKeys = 'title' | 'path' | 'route' | 'description';
+type FrontMatterKeys = 'title' | 'path' | 'route';
+type OptionalFrontMatterKeys = 'description' | 'order';
 
 type PageProps = {
   name: string;
   code: string;
-  frontmatter: Record<FrontMatterKeys, string> & { headings: DocHeading[] };
-  navItems: { [key in FrontMatterKeys]: string }[];
+  frontmatter: Record<FrontMatterKeys, string> &
+    Partial<Record<OptionalFrontMatterKeys, string>> & {
+      headings: DocHeading[];
+    };
+  navItems: (Record<FrontMatterKeys, string> &
+    Partial<Record<OptionalFrontMatterKeys, string>>)[];
 };

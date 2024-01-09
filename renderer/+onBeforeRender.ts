@@ -18,6 +18,7 @@ async function onBeforeRender(pageContext: PageContext) {
         route: x.frontmatter.route,
         title: x.frontmatter.title,
         path: x.frontmatter.path,
+        order: x.frontmatter.order,
       })),
     name: options.name,
   };

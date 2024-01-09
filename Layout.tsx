@@ -15,11 +15,11 @@ export function Layout({ children }: { children: VNode }) {
       }
     >
       <Header />
-      <div className={'flex flex-row container items-stretch gap-12 pt-10'}>
+      <div className={'flex flex-row container items-stretch pt-10'}>
         <div className={'relative'}>
           <SideBar className={'hidden lg:flex sticky top-10'} />
         </div>
-        <div className={'px-2 py-4 flex flex-col grow'}>
+        <div className={'px-2 py-4 flex flex-col grow gap-1'}>
           <PageHeader />
           <main>{children}</main>
         </div>

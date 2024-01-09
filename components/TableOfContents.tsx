@@ -1,6 +1,7 @@
 import { usePageContext } from '../renderer/usePageContext';
 import { ComponentProps } from 'preact';
 import { cn } from '../utils/cn';
+import { sluggifyTitle } from '../utils/sluggifyTitle';
 
 export function TableOfContents({
   className,
@@ -28,7 +29,7 @@ export function TableOfContents({
               Number(8 ?? 0) * Math.max(x.level - lowest + 1, 0)
             )}px`,
           }}
-          href={`#${x.title.replaceAll(' ', '-').toLowerCase()}`}
+          href={`#${sluggifyTitle(x.title)}`}
         >
           {x.title}
         </a>

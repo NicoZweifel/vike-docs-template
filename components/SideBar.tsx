@@ -10,15 +10,15 @@ export function SideBar({ className, ...props }: ComponentProps<'nav'>) {
   const groups = new Set(navItems.map((x) => x.path).sort());
 
   return (
-    <nav {...props} className={cn('flex px-2 py-4 flex-col', className)}>
+    <nav {...props} className={cn('flex px-2 py-4 flex-col gap-1', className)}>
       {[...groups.values()].map((x) => {
         const formatted = x.replaceAll('/', ' ').trim();
         return (
-          <div key={x}>
+          <div key={x} className={'flex flex-col gap-1'}>
             {x.length > 1 && (
               <p
                 className={
-                  'text-lg font-bold text-neutral-900 dark:text-neutral-100 py-1 pt-3 px-2'
+                  'text font-bold text-neutral-900 dark:text-neutral-100 py-1 pt-3 px-2'
                 }
               >
                 {formatted.charAt(0).toUpperCase() + formatted.slice(1)}
@@ -31,7 +31,7 @@ export function SideBar({ className, ...props }: ComponentProps<'nav'>) {
                 <a
                   key={route}
                   className={
-                    'whitespace-nowrap py-1 px-2 flex items-center hover:bg-neutral-200/80 dark:hover:bg-neutral-800/60 rounded text-neutral-600 hover:text-neutral-900 dark:text-neutral-100 dark:hover:text-neutral-300 font-semibold'
+                    'whitespace-nowrap text-sm py-1 px-2 flex items-center hover:bg-neutral-200/80 dark:hover:bg-neutral-800/60 rounded text-neutral-600 hover:text-neutral-900 dark:text-neutral-100 dark:hover:text-neutral-300 font-semibold'
                   }
                   href={route}
                 >

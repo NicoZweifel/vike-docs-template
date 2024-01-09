@@ -9,5 +9,6 @@ export function Link(props: ComponentProps<'a'>) {
   ]
     .filter(Boolean)
     .join(' ');
+
   return <a {...props} className={className} />;
 }

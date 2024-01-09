@@ -1,26 +1,83 @@
 import { MDXComponents } from 'mdx/types';
-import { H } from './components/H';
 import { cn } from './utils/cn';
 import { Link } from './components/Link';
 import { Image } from '@unpic/preact';
 
 import { ExternalLink } from 'react-feather';
-import { ComponentChildren } from 'preact';
+import { ComponentChildren, ComponentProps, VNode } from 'preact';
+import { sluggifyTitle } from './utils/sluggifyTitle';
+
+type HeadingsType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+
+const getNodeText = (node: ComponentChildren): string => {
+  switch (typeof node) {
+    case 'string':
+      return node;
+    case 'number':
+      return node.toString();
+    case 'object':
+      if (node instanceof Array) return node.map(getNodeText).join('');
+      if ((node as VNode)?.props?.children)
+        return getNodeText((node as VNode).props.children);
+  }
+
+  return '';
+};
+
+export function H({
+  level,
+  className,
+  children,
+  ...props
+}: { level: 1 | 2 | 3 | 4 | 5 | 6 } & ComponentProps<HeadingsType>) {
+  const slug = sluggifyTitle(getNodeText(children));
+  let c = 'font-bold';
+  switch (level) {
+    case 1:
+      c = cn(c, 'text-4xl');
+      break;
+    case 2:
+      c = cn(c, 'text-3xl');
+      break;
+    case 3:
+      c = cn(c, 'text-2xl');
+      break;
+    case 4:
+      c = cn(c, 'text-xl');
+      break;
+    case 5:
+      c = cn(c, 'text-lg');
+      break;
+  }
+
+  const Component: HeadingsType = `h${level}`;
+
+  return (
+    <Link href={`#${slug}`}>
+      <Component {...props} className={cn(c, className)}>
+        {children}
+      </Component>
+    </Link>
+  );
+}
 
 export const mdxComponents: MDXComponents = {
   ...Object.fromEntries(
     ([1, 2, 3, 4, 5, 6] as const).map((x) => [
       `h${x}`,
-      (p) => <H className={'pt-3 scroll-mt-10'} {...p} level={x} />,
+      (p) => (
+        <H
+          className={'pt-3 scroll-mt-10 hover:text-neutral-300'}
+          {...p}
+          level={x}
+        />
+      ),
     ])
   ),
   pre: (p) => (
     <pre
       {...p}
-      className={cn(
-        'py-1 rounded border border-neutral-600/40 dark:border-neutral-600/60 ',
-        p.className
-      )}
+      className={cn('py-1 rounded border border-neutral-700/80', p.className)}
     />
   ),
   p: (p) => <p {...p} className={cn('py-1', p.className)} />,
@@ -31,7 +88,7 @@ export const mdxComponents: MDXComponents = {
     <Link {...p} className={cn('inline-block', p.className)}>
       <button
         className={
-          'bg-neutral-100 hover:bg-neutral-200 text-sm flex text-neutral-800 dark:text-neutral-200 items-center gap-1 flex-row rounded-sm px-0.5 dark:bg-neutral-800 dark:hover:bg-neutral-700'
+          'bg-neutral-100/80 hover:bg-neutral-200/80 text-sm flex text-neutral-800 dark:text-neutral-200 items-center gap-1 flex-row rounded-sm px-0.5 dark:bg-neutral-800/80 dark:hover:bg-neutral-700/80'
         }
       >
         {(p as { children: ComponentChildren }).children}

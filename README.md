@@ -1,29 +1,11 @@
 # vike-docs-template
 
-A minimalistic template to easily deploy customizable mdx pages.
+A template to easily deploy content that has been authored with [`MDX`](https://mdxjs.com/).
 
-## Install
+### Getting started
 
-`pnpm i`
+- Clone the repository or create a repository from the template.
+- `pnpm i`
+- `pnpm dev`
 
-## Development
 
-`pnpm dev`
-
-## Building
-
-`pnpm build`
-
-## Preview build output
-
-`pnpm preview`
-
-## Format
-
-`pnpm format`
-
-## Lint
-
-Will format as well
-
-`pnpm lint`

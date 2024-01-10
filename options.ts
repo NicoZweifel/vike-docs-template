@@ -14,7 +14,15 @@ const options: BundleMDXOptions = {
     mdxOptions: {
       jsxImportSource: 'preact',
       remarkPlugins: [remarkGfm, remarkFrontmatter, remarkMdxFrontmatter],
-      rehypePlugins: [rehypePrism, rehypeSlug],
+      rehypePlugins: [
+        [
+          rehypePrism,
+          {
+            defaultLanguage: 'bash',
+          },
+        ],
+        rehypeSlug,
+      ],
     },
   },
 };

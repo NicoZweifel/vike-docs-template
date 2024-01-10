@@ -17,7 +17,9 @@ export function Header({ className, ...props }: ComponentProps<'header'>) {
       )}
     >
       <nav
-        className={'p-2 flex flex-row container items-stretch justify-between'}
+        className={
+          'py-2 px-2 sm:px-4 lg:px-8 flex flex-row container items-stretch justify-between'
+        }
       >
         <div className={'flex flex-row place-items-center gap-2'}>
           <Image src={'/vite.svg'} layout={'fixed'} height={20} width={20} />

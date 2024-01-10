@@ -8,7 +8,7 @@ order: 1
 
 Configure the name of the project and other settings like `rehype`/`remark`.
 
-```ts
+```ts {2-3,8-13} showLineNumbers
 const options: BundleMDXOptions = {
   name: 'vike-docs-template',
   pattern: '**/*.mdx',
@@ -63,7 +63,7 @@ Extend the `tailwind.config` or replace as much as required with another styling
 
 Add global css to `index.css`
 
-```css
+```css {7,8,9} showLineNumbers
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -79,7 +79,7 @@ Add global css to `index.css`
 
 Add global mdx components in mdxComponents.tsx
 
-```ts
+```ts {2}
 export const mdxComponents: MDXComponents = {
   // add or change components
 };

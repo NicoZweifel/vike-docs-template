@@ -12,7 +12,11 @@ export function Layout({ children }: { children: VNode }) {
       }
     >
       <Header />
-      <div className={'flex flex-row container items-stretch pt-11'}>
+      <div
+        className={
+          'flex flex-row container items-stretch pt-11 sm:px-2 lg:px-4 sm:gap-4 lg:gap-8'
+        }
+      >
         <SideBar
           style={{
             scrollbarGutter: 'stable',

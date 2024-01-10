@@ -1,4 +1,5 @@
 import { MDXComponents } from 'mdx/types';
+import { Hash } from 'react-feather';
 import { cn } from './utils/cn';
 import { Link } from './components';
 import { Image } from '@unpic/preact';
@@ -53,7 +54,15 @@ function H({
   const Component: HeadingsType = `h${level}`;
 
   return (
-    <Link href={`#${slug}`}>
+    <Link
+      className={
+        'flex items-center group flex-row -ml-5 pt-3 gap-1 hover:text-neutral-700 dark:hover:text-neutral-300'
+      }
+      href={`#${slug}`}
+    >
+      <div className={'invisible group-hover:visible'}>
+        <Hash size={14} />
+      </div>
       <Component {...props} className={cn(c, className)}>
         {children}
       </Component>
@@ -65,15 +74,7 @@ export const mdxComponents: MDXComponents = {
   ...Object.fromEntries(
     ([1, 2, 3, 4, 5, 6] as const).map((x) => [
       `h${x}`,
-      (p) => (
-        <H
-          className={
-            'pt-3 scroll-mt-10 hover:text-neutral-700 dark:hover:text-neutral-300'
-          }
-          {...p}
-          level={x}
-        />
-      ),
+      (p) => <H className={'scroll-mt-14 '} {...p} level={x} />,
     ])
   ),
   pre: (p) => (

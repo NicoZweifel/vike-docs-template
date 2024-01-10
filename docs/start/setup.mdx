@@ -29,6 +29,19 @@ const options: BundleMDXOptions = {
 export default options;
 ```
 
+### Layout
+
+The layout is defined in `Layout.tsx` and can easily be changed by either configuring the `tailwindcss` container class or changing the layout itself.
+
+### Global CSS
+
+Add or import global `CSS` in `index.css` or `Layout.tsx`.
+
+### Prism Themes
+
+This template is using [`rehype-prism-plus`](https://www.npmjs.com/package/rehype-prism-plus) and [`prism-themes`](https://github.com/PrismJS/prism-themes).
+Adjust the settings in `options.ts` and the `Prism` theme css import in `Layout.tsx` as needed.
+
 ## Bring your own!
 
 Use-case specific configurations and implementations are kept to a minimum. Adding your own solutions is recommended.

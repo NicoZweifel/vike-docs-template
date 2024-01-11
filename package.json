@@ -1,12 +1,16 @@
 {
   "name": "vike-docs-template",
+  "repository": "https://github.com/NicoZweifel/vike-docs-template",
   "type": "module",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "format": "prettier **/*.{cjs,js,ts,tsx,css,json,md,mdx} --write",
-    "lint": "eslint **/*.{ts,tsx,mdx} --fix"
+    "lint": "eslint **/*.{ts,tsx,mdx} --fix",
+    "prepare": "husky install",
+    "lint-staged": "npx lint-staged --allow-empty"
   },
   "dependencies": {
     "@preact/signals": "^1.2.2",
@@ -47,10 +51,16 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "glob": "^10.3.10",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
     "prettier": "^3.1.1",
     "typescript": "^5.3.3",
     "vike": "^0.4.156",
     "vite": "^5.0.11",
     "vite-plugin-full-reload": "^1.1.0"
+  },
+  "lint-staged": {
+    "*.{md,json,cjs,js,css}": "prettier --write",
+    "*.{ts,tsx,mdx}": "eslint --fix"
   }
 }

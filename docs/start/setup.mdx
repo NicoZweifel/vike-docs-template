@@ -6,12 +6,16 @@ order: 1
 
 ## Options
 
-Configure the name of the project and other settings like `rehype`/`remark`.
+Configure the name, repository and license and `rehype`/`remark` plugins.
+For convenience, you can re-use the fields in `package.json`, if they are defined.
 
-```ts {2-3,8-13} showLineNumbers
+```ts {4-6,8-13} showLineNumbers
+import packageJsonFile from './package.json';
+
 const options: BundleMDXOptions = {
-  name: 'vike-docs-template',
-  pattern: '**/*.mdx',
+  name: packageJsonFile.name,
+  repository: packageJsonFile.repository,
+  license: packageJsonFile.license,
   // other options
   mdxBundlerOptions: {
     mdxOptions: {
@@ -49,7 +53,7 @@ Use-case specific configurations and implementations are kept to a minimum. Addi
 ### Styling
 
 Adjusting styles and components as needed is required to implement a custom style or theme.
-Check out [`vanilla-extract`](https://vanilla-extract.style/) or [`styleX`](https://stylexjs.com/) if you desire a more type-safe, maintainable and scalable styling solution.
+Check out [`vanilla-extract`](https://vanilla-extract.style/) or [`styleX`](https://stylexjs.com/) if you desire a more type-safe, maintainable and scalable styling solution or check [here](https://vike.dev/tailwind-css) for a more comprehensive list of options.
 
 #### Theming
 

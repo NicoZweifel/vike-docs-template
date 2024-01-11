@@ -5,8 +5,12 @@ import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
 import rehypePrism from 'rehype-prism-plus';
 import rehypeSlug from 'rehype-slug';
 
+import packageJsonFile from './package.json';
+
 const options: BundleMDXOptions = {
-  name: 'vike-docs-template',
+  name: packageJsonFile.name,
+  repository: packageJsonFile.repository,
+  license: packageJsonFile.license,
   pattern: '**/*.mdx',
   cwd: '/docs',
   toc: true,

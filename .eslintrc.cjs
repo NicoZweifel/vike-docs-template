@@ -32,14 +32,7 @@ module.exports = {
   // We don't use plugin:react/recommended here to avoid React-specific rules.
   extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
 
-  plugins: [
-    'prettier',
-    '@typescript-eslint',
-    'compat',
-    'react',
-    'react-hooks',
-    'prettier',
-  ],
+  plugins: ['prettier', '@typescript-eslint', 'compat', 'react', 'react-hooks'],
 
   env: {
     browser: true,

@@ -19,8 +19,11 @@ async function onBeforeRender(pageContext: PageContext) {
         title: x.frontmatter.title,
         path: x.frontmatter.path,
         order: x.frontmatter.order,
+        file: x.frontmatter.file,
       })),
     name: options.name,
+    license: options.license,
+    repository: options.repository,
   };
 
   return {

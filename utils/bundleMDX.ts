@@ -2,6 +2,7 @@ import { bundleMDX as _bundleMDX } from 'mdx-bundler';
 import { glob } from 'glob';
 import path from 'path';
 import { tocPlugin } from './tocPlugin';
+import * as fs from 'fs';
 
 export type MDXBundlerOptions = Omit<
   Parameters<typeof _bundleMDX>[0],
@@ -13,6 +14,8 @@ export type MDXOptions = Parameters<
 
 export type BundleMDXOptions = {
   name: string;
+  license: string;
+  repository: string;
   pattern: string;
   cwd: string;
   toc: boolean;
@@ -31,15 +34,17 @@ async function bundleMDX({
   const res: ReturnType<typeof _bundleMDX>[] = [];
 
   for (let file of files) {
+    const filePath = path.join(cwd, file);
     res.push(
       _bundleMDX({
         ...mdxBundlerOptions,
-        file: path.join(cwd, file),
+        file: filePath,
         cwd,
         mdxOptions: (options, frontmatter) => {
           file = file.replaceAll('\\', '/');
           const name = file.substring(0, file.lastIndexOf('.'));
 
+          frontmatter.cwd = cwd;
           frontmatter.title = frontmatter.title ?? name;
           frontmatter.file = file;
           frontmatter.route = frontmatter.route ?? `/${name}`;
@@ -48,6 +53,7 @@ async function bundleMDX({
             .slice(0, -1)
             .join('/')}`;
           frontmatter.headings = [];
+          frontmatter.lastEdited = fs.statSync(filePath).mtime.toDateString();
 
           // this is the recommended way to add custom remark/rehype plugins:
           // The syntax might look weird, but it protects you in case we add/remove

@@ -1,12 +1,11 @@
 import { MDXComponents } from 'mdx/types';
-import { Hash } from 'react-feather';
+import { Clipboard, Hash } from 'react-feather';
 import { cn } from './utils/cn';
 import { Link } from './components';
 import { Image } from '@unpic/preact';
-
-import { ExternalLink } from 'react-feather';
 import { ComponentChildren, ComponentProps, VNode } from 'preact';
 import { sluggifyTitle } from './utils/sluggifyTitle';
+import { LinkButton } from './components/LinkButton';
 
 type HeadingsType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
@@ -77,31 +76,29 @@ export const mdxComponents: MDXComponents = {
       (p) => <H className={'scroll-mt-14 '} {...p} level={x} />,
     ])
   ),
-  pre: (p) => (
+  pre: ({ children, ...p }) => (
     <pre
       {...p}
-      className={cn('my-1 rounded border border-neutral-700/40', p.className)}
-    />
+      className={cn(
+        'relative my-1 group rounded border border-neutral-700/40',
+        p.className
+      )}
+    >
+      {children}
+      <button
+        className={
+          'absolute hidden group-hover:block bottom-0 right-0 mb-4 mr-4'
+        }
+      >
+        <Clipboard />
+      </button>
+    </pre>
   ),
   p: (p) => <p {...p} className={cn('text-base', p.className)} />,
   ul: (p) => (
     <ul {...p} className={cn('my-1 list-disc list-inside', p.className)} />
   ),
-  a: (p) => (
-    <Link {...p} className={cn('inline-block', p.className)}>
-      <button
-        className={
-          'text-neutral-900/80 hover:text-neutral-700/80 dark:text-neutral-100/80 dark:hover:text-neutral-200/80 flex text-neutral-800 dark:text-neutral-200 items-center gap-1 flex-row rounded-sm px-0.5 '
-        }
-      >
-        {(p as { children: ComponentChildren }).children}
-        {((p as { href?: string }).href?.startsWith('http') ||
-          (p as { href?: string }).href?.startsWith('mailto:')) && (
-          <ExternalLink color={'currentColor'} size={14} />
-        )}
-      </button>
-    </Link>
-  ),
+  a: (p) => <LinkButton {...p} />,
   table: (p) => <table {...p} className={cn('mt-1 mb-3', p.className)} />,
   th: (p) => (
     <td

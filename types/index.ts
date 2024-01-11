@@ -26,6 +26,8 @@ type Page = (pageProps: PageProps) => VNode;
 
 type PageProps = {
   name: string;
+  repository: string;
+  license: string;
   code: string;
   frontmatter: NavItem & {
     headings: DocHeading[];

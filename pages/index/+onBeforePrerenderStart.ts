@@ -12,7 +12,14 @@ async function onBeforePrerenderStart() {
       title: x.frontmatter.title,
       path: x.frontmatter.path,
       order: x.frontmatter.order,
+      file: x.frontmatter.file,
     }));
+
+  const rootOptions = {
+    name: options.name,
+    license: options.license,
+    repository: options.repository,
+  };
 
   return [
     {
@@ -23,7 +30,7 @@ async function onBeforePrerenderStart() {
             (x) => x.frontmatter.route === '/' || x.frontmatter.route === ''
           ) ?? docs[0]),
           navItems,
-          name: options.name,
+          ...rootOptions,
         },
       },
     },
@@ -31,7 +38,7 @@ async function onBeforePrerenderStart() {
       const pageProps = {
         ...x,
         navItems,
-        name: options.name,
+        ...rootOptions,
       };
 
       return {

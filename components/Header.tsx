@@ -6,7 +6,7 @@ import { Image } from '@unpic/preact';
 
 export function Header({ className, ...props }: ComponentProps<'header'>) {
   const {
-    pageProps: { name },
+    pageProps: { name, logo },
   } = usePageContext();
   return (
     <header
@@ -22,7 +22,13 @@ export function Header({ className, ...props }: ComponentProps<'header'>) {
         }
       >
         <div className={'flex flex-row place-items-center gap-2'}>
-          <Image src={'/vite.svg'} layout={'fixed'} height={20} width={20} />
+          <Image
+            alt={'Logo'}
+            src={logo}
+            layout={'fixed'}
+            height={20}
+            width={20}
+          />
           <p className={'text-lg font-bold'}>{name}</p>
         </div>
         <DarkModeToggle />

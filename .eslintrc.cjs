@@ -30,9 +30,20 @@ module.exports = {
   ignorePatterns: ['dist/**/*'],
 
   // We don't use plugin:react/recommended here to avoid React-specific rules.
-  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:vitest/recommended',
+  ],
 
-  plugins: ['prettier', '@typescript-eslint', 'compat', 'react', 'react-hooks'],
+  plugins: [
+    'prettier',
+    '@typescript-eslint',
+    'compat',
+    'react',
+    'react-hooks',
+    'vitest',
+  ],
 
   env: {
     browser: true,

@@ -1,0 +1,22 @@
+---
+title: Components
+description: Changing or providing a Layout or components.
+---
+
+Custom component and snippet imports are fully supported and automatically bundled in parallel with [`mdx-bundler`](https://github.com/kentcdodds/mdx-bundler) and [`esbuild`](https://esbuild.github.io/).
+
+Be careful when adding imports, bundling additional dependencies can significantly increase the bundle size.
+
+### Layout
+
+The layout is defined in `Layout.tsx` and can easily be changed by either configuring the `tailwindcss` container class or changing the layout components or `Layout.tsx` itself.
+
+### MDX Components
+
+Add global mdx components in mdxComponents.tsx
+
+```ts {2}
+export const mdxComponents: MDXComponents = {
+  // add or change components
+};
+```

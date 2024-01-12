@@ -1,7 +1,5 @@
 ---
-title: Setup
 description: Changing and extending the configuration
-order: 1
 ---
 
 ## Options
@@ -9,7 +7,7 @@ order: 1
 Configure the name, repository and license and `rehype`/`remark` plugins.
 For convenience, you can re-use the fields in `package.json`, if they are defined.
 
-```ts {4-6,8-13} showLineNumbers
+```ts {4-6} showLineNumbers
 import packageJsonFile from './package.json';
 
 const options: BundleMDXOptions = {
@@ -17,74 +15,13 @@ const options: BundleMDXOptions = {
   repository: packageJsonFile.repository,
   license: packageJsonFile.license,
   // other options
-  mdxBundlerOptions: {
-    mdxOptions: {
-      jsxImportSource: 'preact',
-      remarkPlugins: [
-        /* add or change remark plugins*/
-      ],
-      rehypePlugins: [
-        /* add or change rehype plugins*/
-      ],
-    },
-  },
 };
 
 export default options;
 ```
 
-### Layout
-
-The layout is defined in `Layout.tsx` and can easily be changed by either configuring the `tailwindcss` container class or changing the layout itself.
-
-### Global CSS
-
-Add or import global `CSS` in `index.css` or `Layout.tsx`.
-
-### Prism Themes
-
-This template is using [`rehype-prism-plus`](https://www.npmjs.com/package/rehype-prism-plus) and [`prism-themes`](https://github.com/PrismJS/prism-themes).
-Adjust the settings in `options.ts` and the `Prism` theme css import in `Layout.tsx` as needed.
+Check out the [styling](/start/styling) section to learn more about changing styles, components and themes, including [prism themes](/start/styling#prism-themes).
 
 ## Bring your own!
 
-Use-case specific configurations and implementations are kept to a minimum. Adding your own solutions is recommended.
-
-### Styling
-
-Adjusting styles and components as needed is required to implement a custom style or theme.
-Check out [`vanilla-extract`](https://vanilla-extract.style/) or [`styleX`](https://stylexjs.com/) if you desire a more type-safe, maintainable and scalable styling solution or check [here](https://vike.dev/tailwind-css) for a more comprehensive list of options.
-
-#### Theming
-
-Light/Dark mode with a class based approach works but theme colors are not configured.
-
-#### Tailwind
-
-Extend the `tailwind.config` or replace as much as required with another styling solution, some recommendations have been made [above](#styling).
-
-#### Global CSS
-
-Add global css to `index.css`
-
-```css {7,8,9} showLineNumbers
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* add css */
-
-.example {
-  background: black;
-}
-```
-
-### MDX Components
-
-Add global mdx components in mdxComponents.tsx
-
-```ts {2}
-export const mdxComponents: MDXComponents = {
-  // add or change components
-};
-```
+Use-case specific configurations and implementations are kept to a minimum. Adding additional solutions is recommended.

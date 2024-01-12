@@ -1,11 +1,19 @@
 import { MDXComponents } from 'mdx/types';
-import { Clipboard, Hash } from 'react-feather';
-import { cn } from './utils/cn';
-import { Link } from './components';
+import { CheckSquare, Clipboard, Hash } from 'react-feather';
+import { cn } from '../utils/cn';
+import { Link, LinkButton } from './index';
 import { Image } from '@unpic/preact';
 import { ComponentChildren, ComponentProps, VNode } from 'preact';
-import { sluggifyTitle } from './utils/sluggifyTitle';
-import { LinkButton } from './components/LinkButton';
+import { sluggifyTitle } from '../utils/sluggifyTitle';
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'preact/hooks';
+import { copyToClipboard } from '../utils/copyToClipboard';
+import { Card } from './Card';
 
 type HeadingsType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
@@ -59,13 +67,67 @@ function H({
       }
       href={`#${slug}`}
     >
-      <div className={'invisible group-hover:visible'}>
-        <Hash size={14} />
+      <div className={'mt-0.5 invisible group-hover:visible'}>
+        <Hash size={16} />
       </div>
       <Component {...props} className={cn(c, className)}>
         {children}
       </Component>
     </Link>
+  );
+}
+
+const usePre = () => {
+  const preRef = useRef<HTMLPreElement>(null);
+  const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setCopied(false), 2000);
+    return () => clearTimeout(timer);
+  }, [copied]);
+
+  const handleClickCopy = useCallback(async () => {
+    if (!preRef.current?.innerText) return;
+    await copyToClipboard(preRef.current.innerText);
+    setCopied(true);
+  }, []);
+
+  return useMemo(
+    () => ({
+      preRef,
+      copied,
+      handleClickCopy,
+    }),
+    [copied, handleClickCopy]
+  );
+};
+
+function Pre({ className, children, ...props }: ComponentProps<'pre'>) {
+  const { preRef, copied, handleClickCopy } = usePre();
+  return (
+    <pre
+      {...props}
+      className={cn(
+        'my-1 relative group rounded border border-neutral-700/40',
+        className
+      )}
+      ref={preRef}
+    >
+      <button
+        type="button"
+        disabled={copied}
+        onClick={handleClickCopy}
+        aria-label="Copy to Clipboard"
+        className={`${
+          copied
+            ? 'text-green-300/40 shadow shadow-green-300/5 border-green-300/15 bg-green-700/5'
+            : 'text-neutral-500/60 hover:shadow hover:shadow-neutral-400/5 border-neutral-700/60 hover:bg-neutral-900/20 hover:text-neutral-400/80 hover:border-neutral-400/40 hidden'
+        } z-10 absolute border rounded p-2 group-hover:flex bottom-0 right-0 mb-6 mr-6`}
+      >
+        {copied ? <CheckSquare size={18} /> : <Clipboard size={18} />}
+      </button>
+      {children}
+    </pre>
   );
 }
 
@@ -76,24 +138,7 @@ export const mdxComponents: MDXComponents = {
       (p) => <H className={'scroll-mt-14 '} {...p} level={x} />,
     ])
   ),
-  pre: ({ children, ...p }) => (
-    <pre
-      {...p}
-      className={cn(
-        'relative my-1 group rounded border border-neutral-700/40',
-        p.className
-      )}
-    >
-      {children}
-      <button
-        className={
-          'absolute hidden group-hover:block bottom-0 right-0 mb-4 mr-4'
-        }
-      >
-        <Clipboard />
-      </button>
-    </pre>
-  ),
+  pre: (p) => <Pre {...p} />,
   p: (p) => <p {...p} className={cn('text-base', p.className)} />,
   ul: (p) => (
     <ul {...p} className={cn('my-1 list-disc list-inside', p.className)} />
@@ -123,6 +168,7 @@ export const mdxComponents: MDXComponents = {
       <Image layout={'fullWidth'} {...p} />
     </div>
   ),
+  Card,
 };
 
 export default mdxComponents;

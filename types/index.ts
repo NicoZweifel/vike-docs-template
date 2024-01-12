@@ -1,8 +1,11 @@
 import { VNode } from 'preact';
-import { DocHeading } from './docHeading';
+import { DocHeading } from './DocHeading';
 import { NavItem } from './NavItem';
+import { ConfigOptions } from './ConfigOptions';
+import { NavTreeNode } from './NavTreeNode';
+import { Frontmatter } from './Frontmatter';
 
-export type { PageProps, DocHeading, NavItem };
+export type { PageProps, DocHeading, NavItem, ConfigOptions };
 
 // https://vike.dev/pageContext#typescript
 declare global {
@@ -25,12 +28,8 @@ declare global {
 type Page = (pageProps: PageProps) => VNode;
 
 type PageProps = {
-  name: string;
-  repository: string;
-  license: string;
   code: string;
-  frontmatter: NavItem & {
-    headings: DocHeading[];
-  };
+  frontmatter: Frontmatter;
   navItems: NavItem[];
-};
+  navTree: NavTreeNode[];
+} & ConfigOptions;

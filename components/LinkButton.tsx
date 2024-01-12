@@ -11,7 +11,7 @@ export const LinkButton = ({
   <Link {...p} className={cn('inline-block', className)}>
     <button
       className={
-        'underline text-neutral-800/80 hover:text-neutral-600/80 dark:text-neutral-200/80 dark:hover:text-neutral-300/80 flex text-neutral-800 dark:text-neutral-200 items-center gap-1 flex-row rounded-sm px-0.5 '
+        'underline text-neutral-600/80 hover:text-neutral-800/80 dark:text-neutral-300/80 dark:hover:text-neutral-200/80 flex text-neutral-800 dark:text-neutral-200 items-center gap-1 flex-row rounded-sm px-0.5 '
       }
     >
       {(p as { children: ComponentChildren }).children}

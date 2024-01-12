@@ -1,5 +1,5 @@
 import { PageContextProvider } from '../context/PageContext';
-import Layout from '../Layout';
+import Layout from '../components/Layout';
 
 export { PageShell };
 

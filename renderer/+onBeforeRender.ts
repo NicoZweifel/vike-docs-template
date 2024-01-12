@@ -1,34 +1,26 @@
 import { PageContext } from 'vike/types';
 
-import { getDocs } from '../utils/getDocs';
 import options from '../options';
+
+import { DocService, PageService } from '../services';
+import { frontmatterProcessor } from '../utils/frontmatterProcessor';
+import { tocPlugin } from '../utils/tocPlugin';
+import { navProcessor } from '../utils/navProcessor';
 
 export { onBeforeRender };
 
 async function onBeforeRender(pageContext: PageContext) {
-  const docs = await getDocs();
+  const docService = new DocService({
+    tocPlugin,
+    frontmatterProcessor,
+    ...options,
+  });
 
-  const pageProps = {
-    ...(docs.find((x) => x.frontmatter.route === pageContext.urlPathname) ??
-      docs.find((x) => x.frontmatter.path === pageContext.urlPathname) ??
-      docs[0]),
-    navItems: docs
-      .filter((x) => x.frontmatter.hidden !== true)
-      .map((x) => ({
-        route: x.frontmatter.route,
-        title: x.frontmatter.title,
-        path: x.frontmatter.path,
-        order: x.frontmatter.order,
-        file: x.frontmatter.file,
-      })),
-    name: options.name,
-    license: options.license,
-    repository: options.repository,
-  };
+  const pageService = new PageService({
+    navProcessor,
+    ...options,
+    docService,
+  });
 
-  return {
-    pageContext: {
-      pageProps,
-    },
-  };
+  return (await pageService.getPages(pageContext.urlPathname))[0];
 }

@@ -1,0 +1,41 @@
+---
+title: Styling
+description: Adding styles and themes
+---
+
+The Styling is unopinionated and adjusting or adding styles is required to implement a custom style or theme.
+Check out [`vanilla-extract`](https://vanilla-extract.style/) or [`styleX`](https://stylexjs.com/) if you desire a more type-safe, maintainable and scalable styling solution or check [here](https://vike.dev/tailwind-css) for a more comprehensive list of options.
+
+#### Global CSS
+
+Add or import global `CSS` in `index.css` or `Layout.tsx`.
+
+```css {7,8,9} showLineNumbers
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* add css */
+
+.example {
+  background: black;
+}
+```
+
+#### Tailwind
+
+Extend the `tailwind.config` or replace as much as required with another styling solution, some recommendations have been made [above](#styling).
+
+#### Theming
+
+Light/Dark mode with a class based approach is implemented but no theme colors are configured.
+
+#### Prism Themes
+
+This template is using [`rehype-prism-plus`](https://www.npmjs.com/package/rehype-prism-plus) and [`prism-themes`](https://github.com/PrismJS/prism-themes).
+Adjust the settings in `options.ts` and the `Prism` theme css import in `Layout.tsx` as needed.
+
+```
+import './index.css';
+import 'prism-themes/themes/prism-vsc-dark-plus.css';
+```

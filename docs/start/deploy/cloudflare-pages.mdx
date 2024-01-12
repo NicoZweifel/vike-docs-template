@@ -1,13 +1,12 @@
 ---
-title: Deploy
-description: Deployment to common cloud providers
+title: Cloudflare Pages
+description: Deploying the project to Cloudflare Pages
 ---
 
-The example docs are hosted on [`Cloudflare Pages`](https://pages.cloudflare.com/).
+To deploy to `Cloudflare Pages`, connect your `Github` account to `Cloudflare`.
 
-## Cloudflare Pages
+## Create Project
 
-- Connect `Cloudflare` with `Github`.
 - Create a new Pages project with the following Build & deployment settings:
 
 | Key                    | Value                                                          |
@@ -18,11 +17,7 @@ The example docs are hosted on [`Cloudflare Pages`](https://pages.cloudflare.com
 
 It should look like this on `Cloudflare`:
 
-<img
-  src="/cloudflare_pages_settings.png"
-  width={800}
-  alt="cloudflare_pages_settings"
-/>
+<img src="/cloudflare_pages_settings.png" alt="cloudflare_pages_settings" />
 
 `pnpm` is used in this project, so we'll have to bypass `npm i` on `Cloudflare` by setting an environment variable in the pages project:
 
@@ -30,17 +25,6 @@ It should look like this on `Cloudflare`:
 NPM_FLAGS=--version
 ```
 
-### Done!
+## Done!
 
 Deploy by pushing your commits to `Github`!
-
-## Other Providers
-
-Deploying to most cloud providers is a matter of a few clicks.
-
-Check the `DEPLOY` section of `vike`'s [docs](https://vike.dev/github-pages) for more information about hosting providers.
-
-## Security
-
-MDX is a superset of JSX, which is javascript. If not careful, evaluating user content can enable XSS attacks.
-Make sure the dev and build environment is isolated and/or protected if you are planning to evaluate dynamic user content.

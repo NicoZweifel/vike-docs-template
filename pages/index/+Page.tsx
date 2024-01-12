@@ -1,8 +1,10 @@
-import { getMDXComponent } from 'mdx-bundler/client';
 import { usePageContext } from '../../context/PageContext';
-import mdxComponents from '../../mdxComponents';
+import { getMDXComponent } from 'mdx-bundler/client';
+import mdxComponents from '../../components/mdxComponents';
 
-export function Page() {
+export { Page };
+
+function Page() {
   const {
     pageProps: { code },
   } = usePageContext();

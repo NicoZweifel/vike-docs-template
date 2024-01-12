@@ -3,6 +3,7 @@ import { ComponentProps } from 'preact';
 import { cn } from '../utils/cn';
 import { sluggifyTitle } from '../utils/sluggifyTitle';
 import { ChevronRight, List } from 'react-feather';
+import { getMDXComponent } from 'mdx-bundler/client';
 
 export function TableOfContents({
   className,
@@ -12,6 +13,10 @@ export function TableOfContents({
     pageProps: { frontmatter },
   } = usePageContext();
   const lowest = Math.min(...frontmatter.headings.map((x) => x.level));
+  const components = frontmatter.headings.map((x) => ({
+    ...x,
+    Component: getMDXComponent(x.title),
+  }));
 
   return (
     <nav {...props} className={cn('flex px-2 py-4 flex-col gap-1', className)}>
@@ -25,19 +30,28 @@ export function TableOfContents({
           On this page
         </p>
       </div>
-      {frontmatter.headings.map((x) => (
+      {components.map(({ title, Component, level }) => (
         <a
-          key={x.title}
+          key={title}
           className={
             'whitespace-nowrap flex flex-row gap-1 group py-0.5 items-center text-neutral-600 hover:text-neutral-900 dark:hover:text-neutral-300 dark:text-neutral-100 rounded-lg'
           }
           style={{
-            marginLeft: `${Math.max(0, 13 * Math.max(x.level - lowest, 0))}px`,
+            marginLeft: `${Math.max(0, 13 * Math.max(level - lowest, 0))}px`,
           }}
-          href={`#${sluggifyTitle(x.title)}`}
+          href={`#${sluggifyTitle(title)}`}
         >
           <ChevronRight size={12} />
-          <p className={'font-semibold text-sm'}>{x.title}</p>
+          <Component
+            components={{
+              p: (p) => (
+                <p
+                  {...p}
+                  className={cn('font-semibold text-sm', p.className)}
+                />
+              ),
+            }}
+          />
         </a>
       ))}
     </nav>

@@ -3,6 +3,7 @@
     "target": "ES2016",
     "module": "ESNext",
     "moduleResolution": "bundler",
+    "esModuleInterop": true,
     "noEmit": true,
     "allowJs": true,
     "checkJs": true,

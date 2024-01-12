@@ -3,8 +3,8 @@ import { navProcessor } from './navProcessor';
 import { Frontmatter } from '../types/Frontmatter';
 
 const defaultValues = {
-  path: '',
-  route: '',
+  path: '/',
+  route: '/',
   lastEdited: '',
   file: '',
   cwd: '',
@@ -27,8 +27,6 @@ describe('navProcessor', () => {
       },
       {
         ...defaultValues,
-        route: '/',
-        path: '',
         order: '0',
         title: 'Mock Title',
       },
@@ -38,13 +36,14 @@ describe('navProcessor', () => {
         ...defaultValues,
         order: '0',
         title: 'Mock Title',
-        route: '/',
+        description: undefined,
       },
       {
         ...defaultValues,
         order: '1',
         title: 'Mock Unsorted Page',
         route: '/unsorted',
+        description: undefined,
       },
     ];
 
@@ -55,9 +54,22 @@ describe('navProcessor', () => {
       navTree: [
         {
           name: '',
-          children: [],
-          path: '/',
-          navItems: expectedNavItems,
+          children: [
+            {
+              children: [],
+              name: '',
+              navItems: [],
+              path: '',
+            },
+            {
+              children: [],
+              name: 'unsorted',
+              navItems: [],
+              path: '/unsorted',
+            },
+          ],
+          path: '',
+          navItems: [],
         },
       ],
     });
@@ -72,8 +84,6 @@ describe('navProcessor', () => {
       },
       {
         ...defaultValues,
-        route: '/',
-        path: '',
         title: 'Mock Title',
       },
     ];
@@ -82,13 +92,14 @@ describe('navProcessor', () => {
         ...defaultValues,
         order: undefined,
         title: 'Mock Title',
-        route: '/',
+        description: undefined,
       },
       {
         ...defaultValues,
         order: undefined,
         title: 'Mock another unsorted Page',
         route: '/unsorted',
+        description: undefined,
       },
     ];
 
@@ -99,9 +110,22 @@ describe('navProcessor', () => {
       navTree: [
         {
           name: '',
-          children: [],
-          navItems: expectedNavItems,
-          path: '/',
+          children: [
+            {
+              children: [],
+              name: '',
+              navItems: [],
+              path: '',
+            },
+            {
+              children: [],
+              name: 'unsorted',
+              navItems: [],
+              path: '/unsorted',
+            },
+          ],
+          navItems: [],
+          path: '',
         },
       ],
     });

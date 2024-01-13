@@ -77,19 +77,6 @@ export class PageService {
       ];
     } else {
       return [
-        {
-          url: '/',
-          pageContext: {
-            pageProps: {
-              ...(docs.find(
-                (x) => x.frontmatter.route === '/' || x.frontmatter.route === ''
-              ) ?? docs[0]),
-              navItems,
-              navTree,
-              ...rootOptions,
-            },
-          },
-        },
         ...docs.map((x) => {
           const pageProps = {
             ...x,
@@ -99,7 +86,7 @@ export class PageService {
           };
 
           return {
-            url: x.frontmatter.route,
+            url: x.frontmatter.route === '' ? '/' : x.frontmatter.route,
             pageContext: {
               pageProps,
             },

@@ -25,6 +25,10 @@ A simple template to easily deploy [`MDX`](https://mdxjs.com/) files.
 - [`Unpic`](https://unpic.pics/) to handle Images.
 - [`prettier`](https://prettier.io/) and [`eslint`](https://eslint.org/) configuration for automatic linting and formatting of files, including [`MDX`](https://mdxjs.com/) documents and Code blocks.
 
+## Performance
+
+![Lighthouse results](/public/lighthouse.png)
+
 ## Security Notice
 
 MDX is javascript. If not carefully done, evaluating user content can expose to XSS attacks.

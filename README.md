@@ -28,4 +28,5 @@ A simple template to easily deploy [`MDX`](https://mdxjs.com/) files.
 ## Security Notice
 
 MDX is javascript. If not carefully done, evaluating user content can expose to XSS attacks.
+
 Always be careful if you are not evaluating your own content.

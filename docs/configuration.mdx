@@ -1,10 +1,13 @@
 ---
-description: Changing and extending the configuration
+description: Changing and extending the configuration.
+order: 2
 ---
+
+Configuration can be done through options or by adding or customizing styles, components or other existing implementations.
 
 ## Options
 
-Configure the name, repository and license and `rehype`/`remark` plugins.
+Configure the name, repository and other options like `rehype`/`remark` plugins.
 For convenience, you can re-use the fields in `package.json`, if they are defined.
 
 ```ts {4-6} showLineNumbers
@@ -20,7 +23,7 @@ const options: BundleMDXOptions = {
 export default options;
 ```
 
-Check out the [styling](/start/styling) section to learn more about changing styles, components and themes, including [prism themes](/start/styling#prism-themes).
+Check out the [styling](/customization/ui/styling) section to learn more about changing styles, components and themes, including [prism themes](/customization/ui/styling#prism-themes).
 
 ## Bring your own!
 

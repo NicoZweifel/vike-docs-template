@@ -1,19 +1,11 @@
 import { MDXComponents } from 'mdx/types';
-import { CheckSquare, Clipboard, Hash } from 'react-feather';
+import { Hash } from 'react-feather';
 import { cn } from '../utils/cn';
 import { Link, LinkButton } from './index';
 import { Image } from '@unpic/preact';
 import { ComponentChildren, ComponentProps, VNode } from 'preact';
 import { sluggifyTitle } from '../utils/sluggifyTitle';
-import {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'preact/hooks';
-import { copyToClipboard } from '../utils/copyToClipboard';
-import { Card } from './Card';
+import { Pre } from './Pre';
 
 type HeadingsType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
@@ -77,60 +69,6 @@ function H({
   );
 }
 
-const usePre = () => {
-  const preRef = useRef<HTMLPreElement>(null);
-  const [copied, setCopied] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setCopied(false), 2000);
-    return () => clearTimeout(timer);
-  }, [copied]);
-
-  const handleClickCopy = useCallback(async () => {
-    if (!preRef.current?.innerText) return;
-    await copyToClipboard(preRef.current.innerText);
-    setCopied(true);
-  }, []);
-
-  return useMemo(
-    () => ({
-      preRef,
-      copied,
-      handleClickCopy,
-    }),
-    [copied, handleClickCopy]
-  );
-};
-
-function Pre({ className, children, ...props }: ComponentProps<'pre'>) {
-  const { preRef, copied, handleClickCopy } = usePre();
-  return (
-    <pre
-      {...props}
-      className={cn(
-        'my-1 relative group rounded border border-neutral-700/40',
-        className
-      )}
-      ref={preRef}
-    >
-      <button
-        type="button"
-        disabled={copied}
-        onClick={handleClickCopy}
-        aria-label="Copy to Clipboard"
-        className={`${
-          copied
-            ? 'text-green-300/40 shadow shadow-green-300/5 border-green-300/15 bg-green-700/5'
-            : 'text-neutral-500/60 hover:shadow hover:shadow-neutral-400/5 border-neutral-700/60 hover:bg-neutral-900/20 hover:text-neutral-400/80 hover:border-neutral-400/40 hidden'
-        } z-10 absolute border rounded p-2 group-hover:flex bottom-0 right-0 mb-6 mr-6`}
-      >
-        {copied ? <CheckSquare size={18} /> : <Clipboard size={18} />}
-      </button>
-      {children}
-    </pre>
-  );
-}
-
 export const mdxComponents: MDXComponents = {
   ...Object.fromEntries(
     ([1, 2, 3, 4, 5, 6] as const).map((x) => [
@@ -168,7 +106,6 @@ export const mdxComponents: MDXComponents = {
       <Image layout={'fullWidth'} {...p} />
     </div>
   ),
-  Card,
 };
 
 export default mdxComponents;

@@ -1,6 +1,8 @@
 import { usePageContext } from '../../context/PageContext';
 import { ComponentProps } from 'preact';
 import { cn } from '../../utils/cn';
+import { getMDXComponent } from 'mdx-bundler/client';
+import { LinkButton } from '../LinkButton';
 
 export function PageHeader({
   className,
@@ -11,6 +13,9 @@ export function PageHeader({
   } = usePageContext();
   const path = frontmatter.path.replace('/', '').replaceAll('/', ' / ');
   const formatted = path.charAt(0).toUpperCase() + path.slice(1);
+  const Component =
+    frontmatter.description && getMDXComponent(frontmatter.description);
+
   return (
     <header {...props} className={cn('gap-1 flex flex-col', className)}>
       {formatted !== frontmatter.title && (
@@ -23,13 +28,22 @@ export function PageHeader({
         </p>
       )}
       <p className={'font-bold text-4xl'}>{frontmatter.title}</p>
-      <p
-        className={
-          'font-semibold text-lg text-neutral-700 dark:text-neutral-300'
-        }
-      >
-        {frontmatter.description}
-      </p>
+      {frontmatter.description && (
+        <Component
+          components={{
+            a: (p) => <LinkButton {...p} />,
+            p: ({ className, ...p }) => (
+              <div
+                {...p}
+                className={cn(
+                  'font-semibold text-lg text-neutral-700 dark:text-neutral-300',
+                  className
+                )}
+              />
+            ),
+          }}
+        />
+      )}
     </header>
   );
 }

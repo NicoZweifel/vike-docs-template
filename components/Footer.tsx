@@ -24,6 +24,7 @@ export const Footer = () => {
             className={'flex flex-row place-items-center gap-2 items-stretch'}
           >
             <Image
+              alt={'logo'}
               src={logo}
               className={'my-0.5'}
               layout={'fixed'}
@@ -40,18 +41,25 @@ export const Footer = () => {
           </div>
           <LinkButton
             className={'text-sm'}
+            aria-label={`${license} License`}
             href={`${repository}/blob/main/LICENSE`}
           >
             {license} License
           </LinkButton>
           <div className={'flex flex-row gap-2'}>
-            <LinkButton hideExternalIcon href={repository}>
+            <LinkButton
+              id={'github_button'}
+              name={'Repository Button'}
+              aria-label={'Navigate to repository'}
+              hideExternalIcon
+              href={repository}
+            >
               <GitHub />
             </LinkButton>
           </div>
         </div>
         <div className={'flex flex-row gap-4'}>
-          {navTree[0]?.children?.map((x) => <NavNode key={x.name} node={x} />)}
+          {navTree[0] && <NavNode flex={'row'} node={navTree[0]} />}
         </div>
       </div>
     </footer>

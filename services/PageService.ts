@@ -1,16 +1,17 @@
 import { ConfigOptions, NavItem } from '../types';
 import { IDocService } from './DocService';
 import { NavTreeNode } from '../types/NavTreeNode';
+import { bundleMDX } from 'mdx-bundler';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type NavProcessor = (frontMatter: Record<string, any>[]) => {
+export type NavGenerator = (frontMatter: Record<string, any>[]) => {
   navItems: NavItem[];
   navTree: NavTreeNode[];
 };
 
 export type PageServiceOptions = ConfigOptions & {
   docService: IDocService;
-  navProcessor: NavProcessor;
+  navGenerator: NavGenerator;
 };
 
 export class PageService {
@@ -19,7 +20,7 @@ export class PageService {
   async getPages(route?: string) {
     const {
       docService,
-      navProcessor,
+      navGenerator,
       name,
       license,
       repository,
@@ -33,10 +34,25 @@ export class PageService {
       repository,
       logo,
       author,
+      route,
     };
 
     const docs = await docService.getDocs();
-    const { navItems, navTree } = navProcessor(docs.map((x) => x.frontmatter));
+
+    await Promise.all(
+      docs.map(async (x) => {
+        x.frontmatter.description =
+          x.frontmatter.description != null
+            ? (
+                await bundleMDX({
+                  source: x.frontmatter.description,
+                })
+              ).code
+            : undefined;
+      })
+    );
+
+    const { navItems, navTree } = navGenerator(docs.map((x) => x.frontmatter));
 
     if (route) {
       const pageProps = {

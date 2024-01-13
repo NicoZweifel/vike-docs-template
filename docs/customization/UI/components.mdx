@@ -7,16 +7,16 @@ Custom component and snippet imports are fully supported and automatically bundl
 
 Be careful when adding imports, bundling additional dependencies can significantly increase the bundle size.
 
-### Layout
+### Global Components
 
-The layout is defined in `Layout.tsx` and can easily be changed by either configuring the `tailwindcss` container class or changing the layout components or `Layout.tsx` itself.
-
-### MDX Components
-
-Add global mdx components in mdxComponents.tsx
+Global `MDX` components can be added in `mdxComponents.tsx`
 
 ```ts {2}
 export const mdxComponents: MDXComponents = {
   // add or change components
 };
 ```
+
+### Layout
+
+The layout is defined in `Layout.tsx` and can easily be changed by either configuring the `tailwindcss` container class or changing the layout components or `Layout.tsx` itself.

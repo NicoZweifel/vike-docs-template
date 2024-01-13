@@ -1,7 +1,7 @@
 import { DocService, DocServiceOptions } from './DocService';
-import { PageService, PageServiceOptions, NavProcessor } from './PageService';
+import { PageService, PageServiceOptions, NavGenerator } from './PageService';
 
 export { PageService, DocService };
-export type { NavProcessor, DocServiceOptions, PageServiceOptions };
+export type { NavGenerator, DocServiceOptions, PageServiceOptions };
 export type Options = DocServiceOptions &
-  Partial<Pick<PageServiceOptions, 'navProcessor'>>;
+  Partial<Pick<PageServiceOptions, 'navGenerator'>>;

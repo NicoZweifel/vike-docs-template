@@ -11,7 +11,7 @@ export const PageLayout = ({
   return (
     <article
       {...props}
-      className={cn('px-2 py-4 flex shrink-1 flex-col grow gap-1', className)}
+      className={cn('px-2 py-4 flex shrink-1 flex-col grow gap-4', className)}
     >
       <PageHeader />
       <main className={'flex flex-col gap-2'}>{children}</main>

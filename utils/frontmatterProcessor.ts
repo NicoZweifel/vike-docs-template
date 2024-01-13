@@ -1,12 +1,12 @@
 import path from 'path';
 import fs from 'fs';
 
-export function frontmatterProcessor(
+export const frontmatterProcessor = (
   cwd: string,
   file: string,
   // eslint-disable-next-line
   frontmatter: Record<string, any>
-) {
+) => {
   const absoluteCwd = path.join(process.cwd(), cwd);
 
   const filePath = path.join(absoluteCwd, file);
@@ -36,4 +36,4 @@ export function frontmatterProcessor(
   ) {
     frontmatter.title = p.charAt(0).toUpperCase() + p.slice(1);
   }
-}
+};

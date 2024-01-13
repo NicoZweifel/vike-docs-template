@@ -5,11 +5,18 @@ import { NavTreeNode } from '../types/NavTreeNode';
 export const NavNode = ({
   node,
   className,
+  flex,
   ...props
-}: { node: NavTreeNode } & Omit<ComponentProps<'div'>, 'children'>) => {
+}: { node: NavTreeNode; flex?: 'col' | 'row' } & Omit<
+  ComponentProps<'div'>,
+  'children'
+>) => {
   const { name, children, path, navItems } = node;
   return (
-    <div {...props} className={cn('flex flex-col gap-1', className)}>
+    <div
+      {...props}
+      className={cn(`flex flex-${flex ?? 'col'} gap-1`, className)}
+    >
       {name.length > 1 && (
         <a
           href={path}
@@ -25,10 +32,10 @@ export const NavNode = ({
           name.length > 0
             ? 'ml-1 pl-2 border-l border-neutral-300/60 dark:border-neutral-800/40'
             : undefined,
-          'flex flex-col gap-2'
+          `flex flex-${flex ?? 'col'} gap-1`
         )}
       >
-        <div className={'flex flex-col gap-0'}>
+        <div className={`flex flex-col gap-1`}>
           {navItems.map(({ title, route }) => (
             <a
               key={route}

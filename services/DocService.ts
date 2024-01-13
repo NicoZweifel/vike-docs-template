@@ -19,7 +19,9 @@ export type DocServiceOptions = ConfigOptions & {
   toc: boolean;
   mdxBundlerOptions: MDXBundlerOptions;
   frontmatterProcessor?: FrontmatterProcessor;
+  sortProvider?: sortProvider<Awaited<ReturnType<typeof bundleMDX>>>;
   tocPlugin?: (headings: DocHeading[]) => unified.Plugin;
+  route?: string;
 };
 
 export interface IDocService {
@@ -28,12 +30,20 @@ export interface IDocService {
   ): Promise<Awaited<ReturnType<typeof bundleMDX>>[]>;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type UnknownFrontMatter = Record<string, any>;
+
 export type FrontmatterProcessor = (
   cwd: string,
   file: string,
-  // eslint-disable-next-line
-  frontmatter: Record<string, any>
+  frontmatter: UnknownFrontMatter
 ) => void;
+
+export type sortProvider<
+  T extends { frontmatter: UnknownFrontMatter } = {
+    frontmatter: UnknownFrontMatter;
+  },
+> = (pages: T[]) => T[];
 
 export class DocService implements IDocService {
   constructor(private readonly options: DocServiceOptions) {}
@@ -46,8 +56,16 @@ export class DocService implements IDocService {
       ...opts,
     };
 
-    const { pattern, mdxBundlerOptions, toc, frontmatterProcessor, tocPlugin } =
-      options;
+    const {
+      pattern,
+      sortProvider,
+      mdxBundlerOptions,
+      toc,
+      frontmatterProcessor,
+      tocPlugin,
+    } = options;
+
+    let route = options.route;
 
     // absolute
     const cwd = path.join(process.cwd(), options.cwd);
@@ -57,38 +75,56 @@ export class DocService implements IDocService {
 
     for (const file of files) {
       const filePath = path.join(cwd, file);
+
       res.push(
-        bundleMDX({
-          ...mdxBundlerOptions,
-          file: filePath,
-          cwd,
-          mdxOptions: (processorOptions, frontmatter) => {
-            frontmatterProcessor?.(options.cwd, file, frontmatter);
+        new Promise((resolve, reject) =>
+          bundleMDX({
+            ...mdxBundlerOptions,
+            file: filePath,
+            cwd,
+            mdxOptions: (processorOptions, frontmatter) => {
+              frontmatterProcessor?.(options.cwd, file, frontmatter);
+              if (route === '/') route = '';
+              if (
+                route &&
+                route.toLowerCase() !== frontmatter.route.toLowerCase() &&
+                route.toLowerCase() !== frontmatter.path.toLowerCase()
+              ) {
+                resolve({
+                  frontmatter,
+                  errors: [],
+                  code: '',
+                  matter: {} as never,
+                });
+              }
 
-            // this is the recommended way to add custom remark/rehype plugins:
-            // The syntax might look weird, but it protects you in case we add/remove
-            // plugins in the future.
-            processorOptions.remarkPlugins = [
-              toc && tocPlugin ? tocPlugin(frontmatter.headings) : [],
-              ...(processorOptions.remarkPlugins ?? []),
-              ...(mdxBundlerOptions.mdxOptions.remarkPlugins ?? []),
-            ];
-            processorOptions.rehypePlugins = [
-              ...(processorOptions.rehypePlugins ?? []),
-              ...(mdxBundlerOptions.mdxOptions.rehypePlugins ?? []),
-            ];
+              // this is the recommended way to add custom remark/rehype plugins:
+              // The syntax might look weird, but it protects you in case we add/remove
+              // plugins in the future.
+              processorOptions.remarkPlugins = [
+                toc && tocPlugin ? tocPlugin(frontmatter.headings) : [],
+                ...(processorOptions.remarkPlugins ?? []),
+                ...(mdxBundlerOptions.mdxOptions.remarkPlugins ?? []),
+              ];
+              processorOptions.rehypePlugins = [
+                ...(processorOptions.rehypePlugins ?? []),
+                ...(mdxBundlerOptions.mdxOptions.rehypePlugins ?? []),
+              ];
 
-            return {
-              ...processorOptions,
-              ...mdxBundlerOptions.mdxOptions,
-              remarkPlugins: processorOptions.remarkPlugins,
-              rehypePlugins: processorOptions.rehypePlugins,
-            };
-          },
-        })
+              return {
+                ...processorOptions,
+                ...mdxBundlerOptions.mdxOptions,
+                remarkPlugins: processorOptions.remarkPlugins,
+                rehypePlugins: processorOptions.rehypePlugins,
+              };
+            },
+          })
+            .then(resolve)
+            .catch(reject)
+        )
       );
     }
 
-    return Promise.all(res);
+    return Promise.all(res).then(sortProvider);
   }
 }

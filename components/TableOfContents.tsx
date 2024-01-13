@@ -4,6 +4,7 @@ import { cn } from '../utils/cn';
 import { sluggifyTitle } from '../utils/sluggifyTitle';
 import { ChevronRight, List } from 'react-feather';
 import { getMDXComponent } from 'mdx-bundler/client';
+import { LinkButton } from './LinkButton';
 
 export function TableOfContents({
   className,
@@ -44,6 +45,7 @@ export function TableOfContents({
           <ChevronRight size={12} />
           <Component
             components={{
+              a: (p) => <LinkButton {...p} />,
               p: (p) => (
                 <p
                   {...p}

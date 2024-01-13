@@ -10,6 +10,7 @@ export const LinkButton = ({
 }: ComponentProps<typeof Link> & { hideExternalIcon?: boolean }) => (
   <Link {...p} className={cn('inline-block', className)}>
     <button
+      aria-labelledby={p.id}
       className={
         'underline text-neutral-600/80 hover:text-neutral-800/80 dark:text-neutral-300/80 dark:hover:text-neutral-200/80 flex text-neutral-800 dark:text-neutral-200 items-center gap-1 flex-row rounded-sm px-0.5 '
       }

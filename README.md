@@ -23,7 +23,6 @@ A simple template to easily deploy [`MDX`](https://mdxjs.com/) files.
 - Uses [`vike`](https://vike.dev/) + [`preact`](https://preactjs.com/) for a small client bundle size (~45kb zipped).
 - [`Unpic`](https://unpic.pics/) to handle Images.
 - [`prettier`](https://prettier.io/) and [`eslint`](https://eslint.org/) configuration for automatic linting and formatting of files, including [`MDX`](https://mdxjs.com/) documents and Code blocks.
--
 
 ## Performance
 

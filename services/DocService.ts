@@ -65,7 +65,7 @@ export class DocService implements IDocService {
       tocPlugin,
     } = options;
 
-    let route = options.route;
+    const route = options.route;
 
     // absolute
     const cwd = path.join(process.cwd(), options.cwd);
@@ -84,7 +84,6 @@ export class DocService implements IDocService {
             cwd,
             mdxOptions: (processorOptions, frontmatter) => {
               frontmatterProcessor?.(options.cwd, file, frontmatter);
-              if (route === '/') route = '';
               if (
                 route &&
                 route.toLowerCase() !== frontmatter.route.toLowerCase() &&

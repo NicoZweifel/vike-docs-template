@@ -103,7 +103,7 @@ export const mdxComponents: MDXComponents = {
   ),
   img: ({ className, ...p }) => (
     <div className={cn('my-2', className)}>
-      <Image layout={'fullWidth'} {...p} />
+      <Image priority layout={'fullWidth'} {...p} />
     </div>
   ),
 };

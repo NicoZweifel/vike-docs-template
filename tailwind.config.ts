@@ -2,7 +2,12 @@ import resolveConfig from 'tailwindcss/resolveConfig';
 
 const config = resolveConfig({
   darkMode: 'class',
-  content: ['./**/*.{ts,tsx,mdx}'],
+  content: [
+    './components/**/*.{ts,tsx}',
+    './pages/**/*.{ts,tsx}',
+    './renderer/**/*.{ts,tsx}',
+    './docs/**/*.mdx',
+  ],
   theme: {
     extend: {},
   },

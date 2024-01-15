@@ -19,7 +19,7 @@ export type DocServiceOptions = ConfigOptions & {
   toc: boolean;
   mdxBundlerOptions: MDXBundlerOptions;
   frontmatterProcessor?: FrontmatterProcessor;
-  sortProvider?: sortProvider<Awaited<ReturnType<typeof bundleMDX>>>;
+  sortProvider?: SortProvider<Awaited<ReturnType<typeof bundleMDX>>>;
   tocPlugin?: (headings: DocHeading[]) => unified.Plugin;
   route?: string;
 };
@@ -40,7 +40,7 @@ export type FrontmatterProcessor = (
   frontmatter: UnknownFrontMatter
 ) => void;
 
-export type sortProvider<
+export type SortProvider<
   T extends { frontmatter: UnknownFrontMatter } = {
     frontmatter: UnknownFrontMatter;
   },

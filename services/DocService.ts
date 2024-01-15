@@ -46,6 +46,8 @@ export type sortProvider<
   },
 > = (pages: T[]) => T[];
 
+class FileNotRequiredError extends Error {}
+
 export class DocService implements IDocService {
   constructor(private readonly options: DocServiceOptions) {}
 
@@ -98,6 +100,7 @@ export class DocService implements IDocService {
                   code: '',
                   matter: {} as never,
                 });
+                throw new FileNotRequiredError();
               }
 
               // this is the recommended way to add custom remark/rehype plugins:
@@ -122,7 +125,9 @@ export class DocService implements IDocService {
             },
           })
             .then(resolve)
-            .catch(reject)
+            .catch((e) => {
+              if (!(e instanceof FileNotRequiredError)) reject(e);
+            })
         )
       );
     }

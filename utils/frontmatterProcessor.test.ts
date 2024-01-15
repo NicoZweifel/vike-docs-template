@@ -17,11 +17,12 @@ describe('processFrontmatter', () => {
   it('processes frontmatter correctly', async () => {
     const cwd = '/mock/cwd';
     const file = 'mock/file.mdx';
+    const baseRoute = '';
     const frontmatter = {
       title: 'Mock Title',
     };
 
-    frontmatterProcessor(cwd, file, frontmatter);
+    frontmatterProcessor(cwd, file, baseRoute, frontmatter);
 
     expect(frontmatter).toEqual({
       cwd,
@@ -37,9 +38,10 @@ describe('processFrontmatter', () => {
   it('processes frontmatter with missing title correctly', async () => {
     const cwd = '/mock/cwd';
     const file = 'mock/file.mdx';
+    const baseRoute = '';
     const frontmatter = {};
 
-    frontmatterProcessor(cwd, file, frontmatter);
+    frontmatterProcessor(cwd, file, baseRoute, frontmatter);
 
     expect(frontmatter).toEqual({
       cwd,
@@ -56,8 +58,9 @@ describe('processFrontmatter', () => {
     const cwd = '/mock/cwd';
     const file = 'mock/index.mdx';
     const frontmatter = {};
+    const baseRoute = '';
 
-    frontmatterProcessor(cwd, file, frontmatter);
+    frontmatterProcessor(cwd, file, baseRoute, frontmatter);
 
     expect(frontmatter).toEqual({
       cwd,

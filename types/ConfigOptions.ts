@@ -4,4 +4,5 @@ export type ConfigOptions = {
   repository: string;
   logo: string;
   author: string;
+  baseRoute: string;
 };

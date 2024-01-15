@@ -26,12 +26,12 @@ const onRenderHtml: OnRenderHtmlAsync = async (
   // See https://vike.dev/head
   const { documentProps } = pageContext.exports;
   const title =
-    (pageContext.pageProps.frontmatter['title'] &&
+    (pageContext.pageProps.frontmatter?.['title'] &&
       `${pageContext.pageProps.frontmatter['title']} - ${options.name}`) ||
     (documentProps && documentProps.title) ||
     'Vite SSR + Preact';
   const desc =
-    (pageContext.pageProps.frontmatter['description'] &&
+    (pageContext.pageProps.frontmatter?.['description'] &&
       pageContext.pageProps.frontmatter['description']) ||
     (documentProps && documentProps.description) ||
     'Preact app with Vite and vike';

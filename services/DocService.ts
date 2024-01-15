@@ -36,6 +36,7 @@ type UnknownFrontMatter = Record<string, any>;
 export type FrontmatterProcessor = (
   cwd: string,
   file: string,
+  baseRoute: string,
   frontmatter: UnknownFrontMatter
 ) => void;
 
@@ -63,6 +64,7 @@ export class DocService implements IDocService {
       toc,
       frontmatterProcessor,
       tocPlugin,
+      baseRoute,
     } = options;
 
     let route = options.route;
@@ -83,7 +85,7 @@ export class DocService implements IDocService {
             file: filePath,
             cwd,
             mdxOptions: (processorOptions, frontmatter) => {
-              frontmatterProcessor?.(options.cwd, file, frontmatter);
+              frontmatterProcessor?.(options.cwd, file, baseRoute, frontmatter);
               if (route === '/') route = '';
               if (
                 route &&

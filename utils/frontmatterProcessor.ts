@@ -4,6 +4,7 @@ import fs from 'fs';
 export const frontmatterProcessor = (
   cwd: string,
   file: string,
+  baseRoute: string,
   // eslint-disable-next-line
   frontmatter: Record<string, any>
 ) => {
@@ -15,11 +16,13 @@ export const frontmatterProcessor = (
 
   const fileName = name.split('/').slice(-1)[0];
 
+  if (baseRoute === '/') baseRoute = '';
+
   frontmatter.cwd = cwd;
   frontmatter.title =
     frontmatter.title ?? fileName.charAt(0).toUpperCase() + fileName.slice(1);
   frontmatter.file = file;
-  frontmatter.route = frontmatter.route ?? `/${name}`;
+  frontmatter.route = `${baseRoute}/${frontmatter.route && frontmatter.route.startsWith('/') ? frontmatter.route.slice(1) : frontmatter.route ?? `${name}`}`;
   frontmatter.path = `${frontmatter.route.split('/').slice(0, -1).join('/')}`;
   frontmatter.headings = [];
   frontmatter.lastEdited = fs.statSync(filePath).mtime.toDateString();

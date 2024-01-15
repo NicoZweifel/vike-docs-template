@@ -26,6 +26,7 @@ export class PageService {
       repository,
       logo,
       author,
+      baseRoute,
     } = this.options;
 
     const rootOptions = {
@@ -35,7 +36,18 @@ export class PageService {
       logo,
       author,
       route,
+      baseRoute,
     };
+
+    if (!route.startsWith(baseRoute)) {
+      return [
+        {
+          pageContext: {
+            pageProps: rootOptions,
+          },
+        },
+      ];
+    }
 
     const docs = await docService.getDocs();
 
@@ -60,7 +72,7 @@ export class PageService {
           (x) => x.frontmatter.route.toLowerCase() === route.toLowerCase()
         ) ??
           docs.find(
-            (x) => x.frontmatter.path.toLowerCase() === route.toLowerCase()
+            (x) => x.frontmatter.route.toLowerCase() === route.toLowerCase()
           ) ??
           docs[0]),
         navItems,

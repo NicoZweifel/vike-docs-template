@@ -59,7 +59,7 @@ export const Footer = () => {
           </div>
         </div>
         <div className={'flex flex-row gap-4'}>
-          {navTree[0] && <NavNode flex={'row'} node={navTree[0]} />}
+          {navTree?.[0] && <NavNode flex={'row'} node={navTree[0]} />}
         </div>
       </div>
     </footer>

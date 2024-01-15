@@ -15,5 +15,6 @@
       "react-dom": ["./node_modules/preact/compat/"]
     }
   },
-  "include": ["node_modules/vite/client.d.ts", "**/*"]
+  "include": ["node_modules/vite/client.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules/*", "dist"]
 }

@@ -39,7 +39,7 @@ export class PageService {
       baseRoute,
     };
 
-    if (!route?.startsWith(baseRoute)) {
+    if (route != undefined && !route.startsWith(baseRoute)) {
       return [
         {
           pageContext: {

@@ -14,7 +14,7 @@ describe('processFrontmatter', () => {
     vi.restoreAllMocks();
   });
 
-  it('processes frontmatter correctly', async () => {
+  it('should process frontmatter correctly', async () => {
     const cwd = '/mock/cwd';
     const file = 'mock/file.mdx';
     const baseRoute = '';
@@ -35,7 +35,7 @@ describe('processFrontmatter', () => {
     });
   });
 
-  it('processes frontmatter with missing title correctly', async () => {
+  it('should process frontmatter that has missing title correctly', async () => {
     const cwd = '/mock/cwd';
     const file = 'mock/file.mdx';
     const baseRoute = '';
@@ -54,7 +54,7 @@ describe('processFrontmatter', () => {
     });
   });
 
-  it('processes frontmatter from index file correctly', async () => {
+  it('should process frontmatter taken from index file correctly', async () => {
     const cwd = '/mock/cwd';
     const file = 'mock/index.mdx';
     const frontmatter = {};

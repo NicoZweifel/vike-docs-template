@@ -55,7 +55,7 @@ const Card = ({
       >
         {x.icon}
       </div>
-      {children}
+      <p>{children}</p>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import { usePageContext } from '../../context/PageContext';
 import { getMDXComponent } from 'mdx-bundler/client';
-import mdxComponents from '../../docs/mdxComponents';
+import mdxComponents from '../../components/mdxComponents';
 import { PageLayout } from '../../components';
 import { Page as ErrorPage } from '../_error/+Page';
 

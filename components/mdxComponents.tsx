@@ -1,11 +1,11 @@
 import { MDXComponents } from 'mdx/types';
 import { AlertTriangle, CheckSquare, Hash, Info, XCircle } from 'react-feather';
 import { cn } from '../utils/cn';
-import { Link, LinkButton } from '../components';
+import { Link, LinkButton } from './index';
 import { Image } from '@unpic/preact';
 import { ComponentChildren, ComponentProps, VNode } from 'preact';
 import { sluggifyTitle } from '../utils/sluggifyTitle';
-import { Pre } from '../components/Pre';
+import { Pre } from './Pre';
 
 type HeadingsType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 

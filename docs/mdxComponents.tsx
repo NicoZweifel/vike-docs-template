@@ -51,11 +51,17 @@ const Card = ({
     <div
       {...p}
       className={cn(
-        'flex flex-row gap-4 border p-3 rounded bg-red-300/10 border-red-500/10 place-items-center',
+        'flex text-neutral-950/95 dark:text-neutral-200/80 flex-row gap-4 border p-3 rounded bg-red-300/10 border-red-500/10 place-items-center',
         x.className
       )}
     >
-      <div className={'flex min-h-10 place-items-center'}>{x.icon}</div>
+      <div
+        className={
+          'flex min-h-10 place-items-center text-neutral-900/60 dark:text-neutral-400/80'
+        }
+      >
+        {x.icon}
+      </div>
       {children}
     </div>
   );

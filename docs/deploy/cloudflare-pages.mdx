@@ -3,6 +3,8 @@ title: Cloudflare Pages
 description: Deploying the project to [`Cloudflare Pages`](https://pages.cloudflare.com/).
 ---
 
+import { Image } from '@unpic/preact';
+
 To deploy to [`Cloudflare Pages`](https://pages.cloudflare.com/), connect your `Github` account to `Cloudflare`.
 
 ## Create Project
@@ -17,7 +19,7 @@ To deploy to [`Cloudflare Pages`](https://pages.cloudflare.com/), connect your `
 
 The `Cloudflare` build configuration section should look like this:
 
-![cloudflare_pages_settings](/cloudflare_pages_settings.png)
+<Image src={'/cloudflare_pages_settings.png'} />
 
 `pnpm` is used in this project, so we'll have to bypass `npm i` on `Cloudflare` by setting an environment variable in the pages project:
 
@@ -27,4 +29,4 @@ NPM_FLAGS=--version
 
 ## Done!
 
-Deploy by pushing your commits to `Github`!
+<Success>Deploy by pushing your commits to `Github`!</Success>

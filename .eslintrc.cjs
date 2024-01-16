@@ -123,6 +123,9 @@ module.exports = {
       settings: {
         'mdx/code-blocks': true,
       },
+      rules: {
+        'react/jsx-no-undef': 0,
+      },
     },
   ],
 };

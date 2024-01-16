@@ -6,7 +6,7 @@ const config = resolveConfig({
     './components/**/*.{ts,tsx}',
     './pages/**/*.{ts,tsx}',
     './renderer/**/*.{ts,tsx}',
-    './docs/**/*.mdx',
+    './docs/**/*.{tsx,mdx}',
   ],
   theme: {
     extend: {},

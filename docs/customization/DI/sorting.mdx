@@ -1,0 +1,20 @@
+---
+description: Change how sorting is handled
+---
+
+The sort order can be determined by passing a `SortProvider` in [`options.ts`](/configuration).
+
+```tsx
+export type Options = {
+  // other options
+  sortProvider?: SortProvider<Awaited<ReturnType<typeof bundleMDX>>>;
+};
+```
+
+```ts
+export type SortProvider<
+  T extends { frontmatter: UnknownFrontMatter } = {
+    frontmatter: UnknownFrontMatter;
+  },
+> = (pages: T[]) => T[];
+```

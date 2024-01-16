@@ -5,7 +5,7 @@ description: Change how sorting is handled
 The sort order can be determined by passing a `SortProvider` in [`options.ts`](/configuration).
 
 ```tsx
-export type DocServiceOptions = ConfigOptions & {
+export type Options = {
   // other options
   sortProvider?: SortProvider<Awaited<ReturnType<typeof bundleMDX>>>;
 };

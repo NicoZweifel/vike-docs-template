@@ -6,7 +6,7 @@ description: Change how the table of contents is generated
 You can Override the default table of contents plugin by passing an alternative plugin in `options.ts`.
 
 ```tsx
-export type DocServiceOptions = ConfigOptions & {
+export type Options = {
   // other options
   tocPlugin?: (headings: DocHeading[]) => unified.Plugin;
 };

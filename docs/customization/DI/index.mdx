@@ -1,0 +1,32 @@
+---
+description: Inject dependencies
+---
+
+Similar to how `remark` and `rehype` plugins and other options can be passed you can also inject your own implementations instead of the existing ones.
+
+<Warning>
+  Changing any of these potentially requires updating components as well.
+</Warning>
+
+Please feel free to replace existing implementations for use-cases like the following:
+
+- [`Frontmatter`](/customization/dependency-injection/frontmatter)
+- [`Sorting`](/customization/dependency-injection/sorting)
+- [`Table of contents`](/customization/dependency-injection/tableOfContents)
+
+<Info>
+[Contributions](/customization/) to the existing implementations are always welcome!
+</Info>
+
+Feel free to check the [`GitHub Issues`](https://github.com/NicoZweifel/vike-docs-template/issues) for any potential overlap.
+
+```tsx
+export type DocServiceOptions = ConfigOptions & {
+  // other options
+  mdxBundlerOptions: MDXBundlerOptions;
+  frontmatterProcessor?: FrontmatterProcessor;
+  sortProvider?: SortProvider<Awaited<ReturnType<typeof bundleMDX>>>;
+  tocPlugin?: (headings: DocHeading[]) => unified.Plugin;
+};
+
+```

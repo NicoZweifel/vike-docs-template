@@ -30,6 +30,7 @@ export const frontmatterProcessor = (
   const p = frontmatter.path.split('/').slice(-1)[0];
 
   if (frontmatter.route.endsWith('/index')) {
+    frontmatter.index = true;
     frontmatter.route = frontmatter.route.slice(0, -6);
   }
 
@@ -37,6 +38,7 @@ export const frontmatterProcessor = (
     frontmatter.title.toLowerCase() === 'index' ||
     frontmatter.title.toLowerCase() === p.toLowerCase()
   ) {
+    frontmatter.index = true;
     frontmatter.title = p.charAt(0).toUpperCase() + p.slice(1);
   }
 };

@@ -1,0 +1,13 @@
+---
+description: Change how sorting is handled
+---
+
+The sort order can be determined by passing a `SortProvider` in [`options.ts`](/configuration).
+
+```ts
+export type SortProvider<
+  T extends { frontmatter: UnknownFrontMatter } = {
+    frontmatter: UnknownFrontMatter;
+  },
+> = (pages: T[]) => T[];
+```

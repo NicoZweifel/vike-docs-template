@@ -1,0 +1,14 @@
+---
+description: Change how frontmatter is processed
+---
+
+Frontmatter can be manipulated by passing a `FrontmatterProcessor` in [`options.ts`](/configuration).
+
+```ts
+export type FrontmatterProcessor = (
+  cwd: string,
+  file: string,
+  baseRoute: string,
+  frontmatter: UnknownFrontMatter
+) => void;
+```

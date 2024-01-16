@@ -1,13 +1,72 @@
 import { MDXComponents } from 'mdx/types';
-import { Hash } from 'react-feather';
+import { AlertTriangle, CheckSquare, Hash, Info, XCircle } from 'react-feather';
 import { cn } from '../utils/cn';
-import { Link, LinkButton } from './index';
+import { Link, LinkButton } from '../components';
 import { Image } from '@unpic/preact';
 import { ComponentChildren, ComponentProps, VNode } from 'preact';
 import { sluggifyTitle } from '../utils/sluggifyTitle';
-import { Pre } from './Pre';
+import { Pre } from '../components/Pre';
 
 type HeadingsType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+
+const Card = ({
+  children,
+  variant,
+  ...p
+}: ComponentProps<'div'> & {
+  variant: 'success' | 'warning' | 'info' | 'error';
+}) => {
+  const size = 24;
+  let x: {
+    className?: string;
+    icon?: VNode;
+  } = {};
+  switch (variant) {
+    case 'success':
+      x = {
+        className: 'bg-green-300/10 border-green-500/10',
+        icon: <CheckSquare size={size} />,
+      };
+      break;
+    case 'warning':
+      x = {
+        className: 'bg-amber-300/10 border-amber-500/10',
+        icon: <AlertTriangle size={size} />,
+      };
+      break;
+    case 'info':
+      x = {
+        className: 'bg-blue-300/10 border-blue-500/10',
+        icon: <Info size={size} />,
+      };
+      break;
+    case 'error':
+      x = {
+        className: 'bg-red-300/10 border-red-500/10',
+        icon: <XCircle size={size} />,
+      };
+      break;
+  }
+  return (
+    <div
+      {...p}
+      className={cn(
+        'flex flex-row gap-4 border p-4 px-4 rounded bg-red-300/10 border-red-500/10 font-semibold place-items-center',
+        x.className
+      )}
+    >
+      <div className={'flex min-h-10 place-items-center'}>{x.icon}</div>
+      {children}
+    </div>
+  );
+};
+
+const customComponents = {
+  Success: (p) => <Card {...p} variant={'success'} />,
+  Warning: (p) => <Card {...p} variant={'warning'} />,
+  Info: (p) => <Card {...p} variant={'info'} />,
+  Error: (p) => <Card {...p} variant={'error'} />,
+};
 
 const getNodeText = (node: ComponentChildren): string => {
   switch (typeof node) {
@@ -70,6 +129,7 @@ function H({
 }
 
 export const mdxComponents: MDXComponents = {
+  ...customComponents,
   ...Object.fromEntries(
     ([1, 2, 3, 4, 5, 6] as const).map((x) => [
       `h${x}`,

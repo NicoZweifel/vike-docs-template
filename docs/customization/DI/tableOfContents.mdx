@@ -6,7 +6,8 @@ description: Change how the table of contents is generated
 You can Override the default table of contents plugin.
 
 <Info>
-  The array that is passed to the plugin should be filled with the headings that are retrieving when parsing the `AST`.
+  The array that is passed to the plugin should be filled with the headings that
+  are retrieving when parsing the `AST`.
 </Info>
 
 ```ts
@@ -14,6 +15,4 @@ export type DocServiceOptions = ConfigOptions & {
   // other options
   tocPlugin?: (headings: DocHeading[]) => unified.Plugin;
 };
-
-
 ```

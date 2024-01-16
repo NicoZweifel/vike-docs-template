@@ -15,7 +15,8 @@ Please feel free to replace existing implementations for use-cases like the foll
 - [`Table of contents`](/customization/dependency-injection/tableOfContents)
 
 <Info>
-[Contributions](/customization/) to the existing implementations are always welcome!
+  [Contributions](/customization/) to the existing implementations are always
+  welcome!
 </Info>
 
 Feel free to check the [`GitHub Issues`](https://github.com/NicoZweifel/vike-docs-template/issues) for any potential overlap.
@@ -28,5 +29,4 @@ export type DocServiceOptions = ConfigOptions & {
   sortProvider?: SortProvider<Awaited<ReturnType<typeof bundleMDX>>>;
   tocPlugin?: (headings: DocHeading[]) => unified.Plugin;
 };
-
 ```

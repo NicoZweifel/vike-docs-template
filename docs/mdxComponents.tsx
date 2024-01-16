@@ -51,7 +51,7 @@ const Card = ({
     <div
       {...p}
       className={cn(
-        'flex flex-row gap-4 border p-4 px-4 rounded bg-red-300/10 border-red-500/10 font-semibold place-items-center',
+        'flex flex-row gap-4 border p-3 rounded bg-red-300/10 border-red-500/10 place-items-center',
         x.className
       )}
     >

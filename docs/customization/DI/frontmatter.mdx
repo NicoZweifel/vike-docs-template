@@ -2,7 +2,14 @@
 description: Change how frontmatter is processed
 ---
 
-Frontmatter can be manipulated by passing a `FrontmatterProcessor` in [`options.ts`](/configuration).
+Frontmatter can be manipulated by passing a `FrontmatterProcessor`, which makes changes to the `frontmatter` object, in [`options.ts`](/configuration).
+
+```tsx
+export type DocServiceOptions = ConfigOptions & {
+  // other options
+  frontmatterProcessor?: FrontmatterProcessor;
+};
+```
 
 ```ts
 export type FrontmatterProcessor = (

@@ -4,6 +4,13 @@ description: Change how sorting is handled
 
 The sort order can be determined by passing a `SortProvider` in [`options.ts`](/configuration).
 
+```tsx
+export type DocServiceOptions = ConfigOptions & {
+  // other options
+  sortProvider?: SortProvider<Awaited<ReturnType<typeof bundleMDX>>>;
+};
+```
+
 ```ts
 export type SortProvider<
   T extends { frontmatter: UnknownFrontMatter } = {

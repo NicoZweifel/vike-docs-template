@@ -55,7 +55,7 @@ export function Header({ className, ...props }: ComponentProps<'header'>) {
           </div>
         </div>
         <div
-          className={`flex-row gap-4 ${expanded.value ? 'flex' : 'hidden'} pt-2 border-t border-neutral-300/40 dark:border-neutral-800/40 `}
+          className={`flex-row gap-4 ${expanded.value ? 'flex lg:hidden' : 'hidden'} pt-2 border-t border-neutral-300/40 dark:border-neutral-800/40 `}
         >
           {navTree?.[0] && <NavNode flex={'row'} node={navTree[0]} />}
         </div>

@@ -46,6 +46,7 @@ export function Header({ className, ...props }: ComponentProps<'header'>) {
             <DarkModeToggle />
             <button
               onClick={() => (expanded.value = !expanded.value)}
+              aria-label={'Expand/Collapse the navigation menu'}
               className={
                 'place-items-center lg:hidden py-0 px-1.5 rounded flex hover:bg-neutral-200/80 dark:hover:bg-neutral-800/60 text-neutral-600/80 hover:text-neutral-800/80 dark:text-neutral-300/80 dark:hover:text-neutral-200/80 text-neutral-800 dark:text-neutral-200 '
               }

@@ -31,7 +31,7 @@ export const Footer = () => {
               height={16}
               width={16}
             />
-            <p className={'text font-bold'}>{name}</p>
+            <p className={'text font-bold flex-shrink-0'}>{name}</p>
           </div>
           <div className={'flex flex-row gap-1'}>
             <p className={'font-semibold text-sm pt-0.5'}>©</p>
@@ -58,7 +58,7 @@ export const Footer = () => {
             </LinkButton>
           </div>
         </div>
-        <div className={'flex flex-row gap-4'}>
+        <div className={'flex-row gap-4 hidden lg:flex'}>
           {navTree?.[0] && <NavNode flex={'row'} node={navTree[0]} />}
         </div>
       </div>

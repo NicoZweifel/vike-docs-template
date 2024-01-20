@@ -15,6 +15,7 @@ A simple template to easily deploy [`MDX`](https://mdxjs.com/) files.
 - Author mdx files in a `docs` folder or with [any file pattern](https://vike-docs-template.nicozweifel.com/configuration#options).
 - File and frontmatter based routing
 - A Perfect lighthouse score.
+- Markdown support for descriptions, table of contents and headings.
 - 100% static output, resulting in an easy and blazingly fast [Deployment](https://vike-docs-template.nicozweifel.com/deploy) to [`GitHub Pages`](https://pages.github.com/), [`Cloudflare Pages`](https://pages.cloudflare.com/), [`Vercel`](https://vercel.com/), [`AWS`](https://aws.amazon.com/) and many other hosting providers.
 - Full support for custom components and snippets. Import anything in your documents, all files will be bundled in parallel with [`mdx-bundler`](https://github.com/kentcdodds/mdx-bundler) and [`esbuild`](https://esbuild.github.io/).
 - Unopinionated styling. Easily add [Global CSS](https://vike-docs-template.nicozweifel.com/customization/UI/styling#global-css), a custom [`tailwind`](https://vike-docs-template.nicozweifel.com/customization/UI/styling#tailwind) config or other [styling solutions](https://vike-docs-template.nicozweifel.com/customization/UI/styling).

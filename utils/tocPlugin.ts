@@ -16,20 +16,23 @@ export const tocPlugin =
           const elm = element as MdxJsxTextElement & {
             depth: 1 | 2 | 3 | 4 | 5 | 6;
           };
-          const title = (
+
+          const title = toMarkdown(
+            { type: 'paragraph', children: elm.children },
+            { extensions: [mdxToMarkdown()] }
+          )
+            .trim()
+            .replace(/<.*$/g, '')
+            .replace(/\\/g, '')
+            .trim();
+
+          const content = (
             await bundleMDX({
-              source: toMarkdown(
-                { type: 'paragraph', children: elm.children },
-                { extensions: [mdxToMarkdown()] }
-              )
-                .trim()
-                .replace(/<.*$/g, '')
-                .replace(/\\/g, '')
-                .trim(),
+              source: title,
             })
           ).code;
 
-          headings.push({ level: elm.depth, title });
+          headings.push({ level: elm.depth, title, content });
         }
       }
     };

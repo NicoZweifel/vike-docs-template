@@ -16,7 +16,7 @@ export function TableOfContents({
   const lowest = Math.min(...frontmatter.headings.map((x) => x.level));
   const components = frontmatter.headings.map((x) => ({
     ...x,
-    Component: getMDXComponent(x.title),
+    Component: getMDXComponent(x.content),
   }));
 
   return (

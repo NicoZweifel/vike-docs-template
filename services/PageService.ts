@@ -55,7 +55,7 @@ export class PageService {
 
     await Promise.all(
       docs.map(async (x) => {
-        x.frontmatter.descriptionContent =
+        x.frontmatter.descriptionCode =
           x.frontmatter.description != null
             ? (
                 await bundleMDX({

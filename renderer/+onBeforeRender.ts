@@ -11,19 +11,23 @@ import { sortProvider } from '../utils/sortProvider';
 export { onBeforeRender };
 
 async function onBeforeRender(pageContext: PageContext) {
-  const docService = new DocService({
+  const opts = {
+    ...options,
     route: pageContext.urlPathname,
+  };
+
+  const docService = new DocService({
     tocPlugin,
     frontmatterProcessor,
     sortProvider,
-    ...options,
+    ...opts,
   });
 
   const pageService = new PageService({
     navGenerator,
-    ...options,
+    ...opts,
     docService,
   });
 
-  return (await pageService.getPages(pageContext.urlPathname))[0];
+  return (await pageService.getPages())[0];
 }

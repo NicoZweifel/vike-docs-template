@@ -12,12 +12,13 @@ export type NavGenerator = (frontMatter: Record<string, any>[]) => {
 export type PageServiceOptions = ConfigOptions & {
   docService: IDocService;
   navGenerator: NavGenerator;
+  route?: string;
 };
 
 export class PageService {
   constructor(private readonly options: PageServiceOptions) {}
 
-  async getPages(route?: string) {
+  async getPages(opts?: Partial<PageServiceOptions>) {
     const {
       docService,
       navGenerator,
@@ -27,7 +28,8 @@ export class PageService {
       logo,
       author,
       baseRoute,
-    } = this.options;
+      route,
+    } = { ...this.options, ...opts };
 
     const rootOptions = {
       name,

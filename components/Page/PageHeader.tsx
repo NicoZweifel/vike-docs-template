@@ -13,7 +13,7 @@ export function PageHeader({
   } = usePageContext();
   const path = frontmatter.path.split('/').filter((x) => x.length > 0);
   const Component =
-    frontmatter.description && getMDXComponent(frontmatter.description);
+    frontmatter.descriptionCode && getMDXComponent(frontmatter.descriptionCode);
 
   let basePath = '';
 

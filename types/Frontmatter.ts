@@ -5,4 +5,5 @@ export type Frontmatter = NavItem & {
   headings: DocHeading[];
   hidden?: boolean;
   index?: boolean;
+  descriptionCode?: string;
 };

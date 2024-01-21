@@ -29,6 +29,8 @@ type Page = (pageProps: PageProps) => VNode;
 
 type PageProps = {
   code: string;
+  title: string;
+  description: string;
   frontmatter: Frontmatter;
   navItems: NavItem[];
   navTree: NavTreeNode[];

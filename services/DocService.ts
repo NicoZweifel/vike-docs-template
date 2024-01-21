@@ -70,6 +70,7 @@ export class DocService implements IDocService {
     } = options;
 
     let route = options.route;
+    if (route === '/') route = '';
 
     // absolute
     const cwd = path.join(process.cwd(), options.cwd);
@@ -88,7 +89,6 @@ export class DocService implements IDocService {
             cwd,
             mdxOptions: (processorOptions, frontmatter) => {
               frontmatterProcessor?.(options.cwd, file, baseRoute, frontmatter);
-              if (route === '/') route = '';
               if (
                 route &&
                 route.toLowerCase() !== frontmatter.route.toLowerCase() &&

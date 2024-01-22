@@ -31,6 +31,7 @@ export class PageService {
       baseRoute,
       isApi,
       route,
+      useGroups,
     } = { ...this.options, ...opts };
 
     const rootOptions = {
@@ -42,6 +43,7 @@ export class PageService {
       route,
       baseRoute,
       isApi,
+      useGroups,
     };
 
     if (route != undefined && !route.startsWith(baseRoute)) {

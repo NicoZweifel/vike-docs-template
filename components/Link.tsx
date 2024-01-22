@@ -11,7 +11,7 @@ export function Link({ className, ...props }: ComponentProps<'a'>) {
       className={cn(
         className,
         urlPathname === props.href
-          ? 'bg-neutral-200/80 dark:bg-neutral-800/60'
+          ? 'bg-neutral-200/80 dark:bg-neutral-800/60 text-neutral-900 dark:text-neutral-300 '
           : undefined
       )}
     />

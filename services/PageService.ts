@@ -109,7 +109,10 @@ export class PageService {
             ...rootOptions,
           };
 
-          const url = x.frontmatter.route;
+          const url =
+            (x.frontmatter.route?.length ?? 0) === 0
+              ? '/'
+              : x.frontmatter.route;
 
           return {
             url,

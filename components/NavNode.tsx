@@ -17,8 +17,7 @@ export const NavNode = ({
   } = usePageContext();
   const { name, children, path, navItems } = node;
 
-  const isBaseRoute = path === baseRoute;
-
+  const isBaseRoute = (path.length === 0 ? '/' : path) === baseRoute;
   const childNodes = children
     .filter((x) => x.navItems.length > 0)
     .map((x) => (

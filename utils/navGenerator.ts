@@ -27,7 +27,5 @@ export const navGenerator = (frontMatter: Frontmatter[]) => {
 
   const navTree = createNavTree(groups);
 
-  console.log(JSON.stringify(navTree, undefined, 2));
-
   return { navItems, navTree };
 };

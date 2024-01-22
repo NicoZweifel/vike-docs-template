@@ -49,6 +49,7 @@ describe('navProcessor', () => {
         {
           name: '',
           navItems: expectedNavItems,
+          path: '/',
           children: [
             {
               children: [],
@@ -59,8 +60,8 @@ describe('navProcessor', () => {
             {
               children: [],
               name: '',
+              navItems: [],
               path: '/',
-              navItems: expectedNavItems,
             },
           ],
         },

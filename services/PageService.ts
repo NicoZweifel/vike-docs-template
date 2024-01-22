@@ -55,7 +55,7 @@ export class PageService {
 
     await Promise.all(
       docs.map(async (x) => {
-        x.frontmatter.description =
+        x.frontmatter.descriptionCode =
           x.frontmatter.description != null
             ? (
                 await bundleMDX({
@@ -69,14 +69,19 @@ export class PageService {
     const { navItems, navTree } = navGenerator(docs.map((x) => x.frontmatter));
 
     if (route) {
-      const pageProps = {
-        ...(docs.find(
+      const doc =
+        docs.find(
           (x) => x.frontmatter.route.toLowerCase() === route.toLowerCase()
         ) ??
-          docs.find(
-            (x) => x.frontmatter.route.toLowerCase() === route.toLowerCase()
-          ) ??
-          docs[0]),
+        docs.find(
+          (x) => x.frontmatter.path.toLowerCase() === route.toLowerCase()
+        ) ??
+        docs[0];
+
+      const pageProps = {
+        ...doc,
+        title: doc.frontmatter.title,
+        description: doc.frontmatter.description,
         navItems,
         navTree,
         ...rootOptions,
@@ -94,6 +99,8 @@ export class PageService {
         ...docs.map((x) => {
           const pageProps = {
             ...x,
+            title: x.frontmatter.title,
+            description: x.frontmatter.description,
             navItems,
             navTree,
             ...rootOptions,

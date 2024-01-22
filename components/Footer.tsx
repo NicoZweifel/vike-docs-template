@@ -20,7 +20,8 @@ export const Footer = () => {
         }
       >
         <div className={'flex flex-col gap-4'}>
-          <div
+          <a
+            href={'/'}
             className={'flex flex-row place-items-center gap-2 items-stretch'}
           >
             <Image
@@ -32,7 +33,7 @@ export const Footer = () => {
               width={16}
             />
             <p className={'text font-bold flex-shrink-0'}>{name}</p>
-          </div>
+          </a>
           <div className={'flex flex-row gap-1'}>
             <p className={'font-semibold text-sm pt-0.5'}>©</p>
             <p className={'text-sm'}>

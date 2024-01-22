@@ -17,59 +17,46 @@ const useNavNode = ({ node, flex }: NavNodeProps) => {
 
   const { children, path, navItems } = node;
 
-  const isBaseRoute = (path.length === 0 ? '/' : path) === baseRoute;
-  const childNodes = useMemo(
-    () =>
-      children
-        .filter((x) => x.navItems.length > 0)
-        .map((x) => (
-          <NavNode
-            key={x.name}
-            node={x}
-            flex={!isBaseRoute ? flex : undefined}
-          />
-        )),
-    [children, flex, isBaseRoute]
-  );
+  return useMemo(() => {
+    const isBaseRoute = (path.length === 0 ? '/' : path) === baseRoute;
+    const childNodes = children
+      .filter((x) => x.navItems.length > 0)
+      .map((x) => (
+        <NavNode key={x.name} node={x} flex={!isBaseRoute ? flex : undefined} />
+      ));
 
-  const content = useMemo(
-    () =>
-      navItems.length > 0 && (
-        <div
-          className={cn(
-            !isBaseRoute
-              ? 'ml-1 pl-2 border-l border-neutral-300/60 dark:border-neutral-800/40'
-              : undefined,
-            `flex flex-${flex ?? 'col'} gap-1`
-          )}
-        >
-          {
-            <div className={`flex flex-col gap-1`}>
-              {navItems.map(({ title, route }) => (
-                <Link
-                  key={route}
-                  className={`${isBaseRoute ? 'font-semibold' : ''} whitespace-nowrap text-sm py-1 px-2 flex items-center hover:bg-neutral-200/80 dark:hover:bg-neutral-800/60 rounded text-neutral-600 hover:text-neutral-900 dark:text-neutral-100 dark:hover:text-neutral-300`}
-                  href={route}
-                >
-                  {title}
-                </Link>
-              ))}
-            </div>
-          }
-          {childNodes}
-        </div>
-      ),
-    [childNodes, flex, isBaseRoute, navItems]
-  );
+    const content = navItems.length > 0 && (
+      <div
+        className={cn(
+          !isBaseRoute
+            ? 'ml-1 pl-2 border-l border-neutral-300/60 dark:border-neutral-800/40'
+            : undefined,
+          `flex flex-${flex ?? 'col'} gap-1`
+        )}
+      >
+        {
+          <div className={`flex flex-col gap-1`}>
+            {navItems.map(({ title, route }) => (
+              <Link
+                key={route}
+                className={`${isBaseRoute ? 'font-semibold' : ''} whitespace-nowrap text-sm py-1 px-2 flex items-center hover:bg-neutral-200/80 dark:hover:bg-neutral-800/60 rounded text-neutral-600 hover:text-neutral-900 dark:text-neutral-100 dark:hover:text-neutral-300`}
+                href={route}
+              >
+                {title}
+              </Link>
+            ))}
+          </div>
+        }
+        {childNodes}
+      </div>
+    );
 
-  return useMemo(
-    () => ({
+    return {
       isBaseRoute,
       content,
       path,
-    }),
-    [content, isBaseRoute, path]
-  );
+    };
+  }, [baseRoute, children, flex, navItems, path]);
 };
 
 export const NavNode = ({

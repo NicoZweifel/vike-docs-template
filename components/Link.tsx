@@ -3,22 +3,27 @@ import { ComponentProps } from 'preact';
 import { cn } from '../utils/cn';
 import { useMemo } from 'preact/hooks';
 
-export function Link({ className, ...props }: ComponentProps<'a'>) {
+const useLink = ({ href }: Pick<ComponentProps<'a'>, 'href'>) => {
   const { urlPathname } = usePageContext();
 
-  const isParent = useMemo(
-    () => props.href !== '/' && urlPathname.startsWith(props.href.toString()),
-    [props.href, urlPathname]
+  return useMemo(
+    () => ({
+      isParent: href !== '/' && urlPathname.startsWith(href.toString()),
+      isActive: urlPathname === href,
+    }),
+    [href, urlPathname]
   );
+};
 
-  const isActive = useMemo(
-    () => urlPathname === props.href,
-    [props.href, urlPathname]
-  );
+export function Link({ className, href, ...props }: ComponentProps<'a'>) {
+  const { isParent, isActive } = useLink({
+    href,
+  });
 
   return (
     <a
       {...props}
+      href={href}
       className={cn(
         className,
         isActive

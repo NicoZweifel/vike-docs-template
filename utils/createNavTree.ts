@@ -8,10 +8,11 @@ function createNode(
   basePath: string
 ): void {
   const name = path.shift() ?? '';
-  let fullPath = [basePath, name].join('/').replaceAll('//', '/');
-  if (fullPath === '/') fullPath = '';
+  const fullPath = [basePath, name].join('/').replaceAll('//', '/');
   const navItems = nav.filter(
-    (y) => y.path === fullPath && y.title.toLowerCase() !== name.toLowerCase()
+    (y) =>
+      y.route === [fullPath, name].join('/').toLowerCase() ||
+      (y.path === fullPath && y.title.toLowerCase() !== name.toLowerCase())
   );
   const idx = tree.findIndex((e: NavTreeNode) => e.name == name);
   if (idx < 0) {
@@ -38,7 +39,7 @@ export function createNavTree(navItems: Map<string, NavItem[]>): NavTreeNode[] {
     const path: string = data[i];
     const split: string[] = path.split('/');
 
-    createNode(split, tree, [...navItems.values()].flat(), '');
+    createNode(split, tree, [...navItems.values()].flat(), '/');
   }
 
   return tree;

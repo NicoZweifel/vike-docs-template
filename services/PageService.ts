@@ -13,6 +13,7 @@ export type PageServiceOptions = ConfigOptions & {
   docService: IDocService;
   navGenerator: NavGenerator;
   route?: string;
+  isApi?: boolean;
 };
 
 export class PageService {
@@ -28,6 +29,7 @@ export class PageService {
       logo,
       author,
       baseRoute,
+      isApi,
       route,
     } = { ...this.options, ...opts };
 
@@ -39,6 +41,7 @@ export class PageService {
       author,
       route,
       baseRoute,
+      isApi,
     };
 
     if (route != undefined && !route.startsWith(baseRoute)) {
@@ -106,8 +109,10 @@ export class PageService {
             ...rootOptions,
           };
 
+          const url = x.frontmatter.route;
+
           return {
-            url: x.frontmatter.route === '' ? '/' : x.frontmatter.route,
+            url,
             pageContext: {
               pageProps,
             },

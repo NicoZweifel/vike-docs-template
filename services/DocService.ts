@@ -67,10 +67,8 @@ export class DocService implements IDocService {
       frontmatterProcessor,
       tocPlugin,
       baseRoute,
+      route,
     } = options;
-
-    let route = options.route;
-    if (route === '/') route = '';
 
     // absolute
     const cwd = path.join(process.cwd(), options.cwd);

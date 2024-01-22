@@ -23,7 +23,9 @@ export const frontmatterProcessor = (
     frontmatter.title ?? fileName.charAt(0).toUpperCase() + fileName.slice(1);
   frontmatter.file = file;
   frontmatter.route = `${baseRoute}/${frontmatter.route && frontmatter.route.startsWith('/') ? frontmatter.route.slice(1) : frontmatter.route ?? `${name}`}`;
+  if ((frontmatter.route?.length ?? 0) === 0) frontmatter.route = '/';
   frontmatter.path = `${frontmatter.route.split('/').slice(0, -1).join('/')}`;
+  if ((frontmatter.path?.length ?? 0) === 0) frontmatter.path = '/';
   frontmatter.headings = [];
   frontmatter.lastEdited = fs.statSync(filePath).mtime.toDateString();
 

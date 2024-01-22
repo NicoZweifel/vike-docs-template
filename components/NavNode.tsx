@@ -17,7 +17,7 @@ export const NavNode = ({
   } = usePageContext();
   const { name, children, path, navItems } = node;
 
-  const isBaseRoute = name === baseRoute.replace('/', '');
+  const isBaseRoute = path === baseRoute;
 
   const childNodes = children
     .filter((x) => x.navItems.length > 0)
@@ -25,10 +25,10 @@ export const NavNode = ({
       <NavNode key={x.name} node={x} flex={!isBaseRoute ? flex : undefined} />
     ));
 
-  const content = (
+  const content = (navItems.length > 0 || childNodes.length > 0) && (
     <div
       className={cn(
-        name.length > 0 && !isBaseRoute
+        !isBaseRoute
           ? 'ml-1 pl-2 border-l border-neutral-300/60 dark:border-neutral-800/40'
           : undefined,
         `flex flex-${flex ?? 'col'} gap-1`
@@ -42,7 +42,7 @@ export const NavNode = ({
               className={
                 'whitespace-nowrap text-sm py-1 px-2 flex items-center hover:bg-neutral-200/80 dark:hover:bg-neutral-800/60 rounded text-neutral-600 hover:text-neutral-900 dark:text-neutral-100 dark:hover:text-neutral-300 font-semibold'
               }
-              href={route === '' ? '/' : route}
+              href={route}
             >
               {title}
             </a>
@@ -61,16 +61,14 @@ export const NavNode = ({
       className={cn(`flex flex-${flex ?? 'col'} gap-1`, className)}
     >
       <>
-        {name.length > 1 && (
-          <a
-            href={path === '' ? '/' : path}
-            className={
-              'text-sm font-bold text-start py-1 pl-2  hover:bg-neutral-200/80 dark:hover:bg-neutral-800/60 rounded text-neutral-600 hover:text-neutral-900 dark:text-neutral-100 dark:hover:text-neutral-300'
-            }
-          >
-            {name.charAt(0).toUpperCase() + name.slice(1)}
-          </a>
-        )}
+        <a
+          href={path}
+          className={
+            'text-sm font-bold text-start py-1 pl-2  hover:bg-neutral-200/80 dark:hover:bg-neutral-800/60 rounded text-neutral-600 hover:text-neutral-900 dark:text-neutral-100 dark:hover:text-neutral-300'
+          }
+        >
+          {name.charAt(0).toUpperCase() + name.slice(1)}
+        </a>
         {content}
       </>
     </div>

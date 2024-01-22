@@ -13,7 +13,7 @@ export type MDXOptions = Parameters<
   Parameters<typeof bundleMDX>[0]['mdxOptions']
 >[0];
 
-export type DocServiceOptions = ConfigOptions & {
+export type DocServiceOptions = Pick<ConfigOptions, 'baseRoute'> & {
   pattern: string;
   cwd: string;
   toc: boolean;

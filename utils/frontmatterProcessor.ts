@@ -24,11 +24,6 @@ export const frontmatterProcessor = (
   frontmatter.file = file;
   frontmatter.route = `${baseRoute}/${frontmatter.route && frontmatter.route.startsWith('/') ? frontmatter.route.slice(1) : frontmatter.route ?? `${name}`}`;
 
-  if (frontmatter.route.endsWith('/index')) {
-    frontmatter.index = true;
-    frontmatter.route = frontmatter.route.slice(0, -6);
-  }
-
   if ((frontmatter.route?.length ?? 0) === 0) frontmatter.route = '/';
 
   frontmatter.path = `${frontmatter.route.split('/').slice(0, -1).join('/')}`;
@@ -39,6 +34,14 @@ export const frontmatterProcessor = (
   frontmatter.lastEdited = fs.statSync(filePath).mtime.toDateString();
 
   const p = frontmatter.path.split('/').slice(-1)[0];
+
+  if (frontmatter.route.endsWith('/index')) {
+    frontmatter.index = true;
+    frontmatter.route = frontmatter.route.slice(
+      frontmatter.route.length > 5 ? 0 : 1,
+      -6
+    );
+  }
 
   if (
     frontmatter.title.toLowerCase() === 'index' ||

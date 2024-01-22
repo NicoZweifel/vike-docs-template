@@ -48,6 +48,7 @@ describe('navProcessor', () => {
       navTree: [
         {
           name: '',
+          navItems: expectedNavItems,
           children: [
             {
               children: [],
@@ -58,12 +59,10 @@ describe('navProcessor', () => {
             {
               children: [],
               name: '',
-              navItems: [],
-              path: '',
+              path: '/',
+              navItems: expectedNavItems,
             },
           ],
-          navItems: [],
-          path: '',
         },
       ],
     });

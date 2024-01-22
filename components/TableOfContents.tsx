@@ -26,7 +26,7 @@ export function TableOfContents({
           <List size={16} />
           <p
             className={
-              'font-bold shrink-0 text-neutral-900 dark:text-neutral-100'
+              'font-semibold text-sm shrink-0 text-neutral-900 dark:text-neutral-100'
             }
           >
             On this page
@@ -48,12 +48,7 @@ export function TableOfContents({
           <Component
             components={{
               a: (p) => <LinkButton {...p} />,
-              p: (p) => (
-                <p
-                  {...p}
-                  className={cn('font-semibold text-sm', p.className)}
-                />
-              ),
+              p: (p) => <p {...p} className={cn('text-sm', p.className)} />,
             }}
           />
         </a>

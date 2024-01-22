@@ -7,14 +7,14 @@ function createNode(
   nav: NavItem[],
   basePath: string
 ): void {
-  const name = path.shift() ?? '';
-  let fullPath = [basePath, name].join('/').replaceAll('//', '/');
-
-  if (fullPath === '/') fullPath = '';
+  const name = path.shift();
+  const fullPath = [basePath, name].join('/').replaceAll('//', '/');
 
   const navItems = nav.filter(
     (y) => y.path === fullPath && y.title.toLowerCase() !== name.toLowerCase()
   );
+
+  navItems.forEach((x) => nav.splice(nav.indexOf(x), 1));
 
   const idx = tree.findIndex((e: NavTreeNode) => e.name == name);
 

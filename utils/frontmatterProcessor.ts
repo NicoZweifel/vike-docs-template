@@ -27,6 +27,9 @@ export const frontmatterProcessor = (
   if ((frontmatter.route?.length ?? 0) === 0) frontmatter.route = '/';
 
   frontmatter.path = `${frontmatter.route.split('/').slice(0, -1).join('/')}`;
+
+  if ((frontmatter.path?.length ?? 0) === 0) frontmatter.path = '/';
+
   frontmatter.headings = [];
   frontmatter.lastEdited = fs.statSync(filePath).mtime.toDateString();
 
@@ -35,6 +38,7 @@ export const frontmatterProcessor = (
   if (frontmatter.route.endsWith('/index')) {
     frontmatter.index = true;
     frontmatter.route = frontmatter.route.slice(0, -6);
+    if ((frontmatter.route?.length ?? 0) === 0) frontmatter.route = '/';
   }
 
   if (

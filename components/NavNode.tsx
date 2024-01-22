@@ -24,7 +24,7 @@ export const NavNode = ({
       <NavNode key={x.name} node={x} flex={!isBaseRoute ? flex : undefined} />
     ));
 
-  const content = (navItems.length > 0 || childNodes.length > 0) && (
+  const content = navItems.length > 0 && (
     <div
       className={cn(
         !isBaseRoute

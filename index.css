@@ -52,10 +52,6 @@
   border-radius: 8px;
 }
 
-pre {
-  overflow-x: auto;
-}
-
 /**
  * Inspired by gatsby remark prism - https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs/
  * 1. Make the element just wide enough to fit its content.

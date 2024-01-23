@@ -41,7 +41,7 @@ export function Pre({ className, children, ...props }: ComponentProps<'pre'>) {
     <pre
       {...props}
       className={cn(
-        'my-1 max-w-[calc(100vw-1.9rem)] overflow-x-auto relative group rounded border border-neutral-700/40',
+        'my-1 max-w-[calc(100vw-1.9rem)] overflow-x-auto relative group rounded border border-neutral-800/5',
         className
       )}
       ref={preRef}

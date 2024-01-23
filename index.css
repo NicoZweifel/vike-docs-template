@@ -52,6 +52,20 @@
   border-radius: 8px;
 }
 
+pre::-webkit-scrollbar-track {
+  background: theme('colors.neutral.950');
+  border: none;
+}
+
+pre::-webkit-scrollbar-thumb {
+  background: theme('colors.neutral.900');
+  border: none;
+}
+
+pre::-webkit-scrollbar-thumb:hover {
+  background: theme('colors.neutral.800');
+}
+
 /**
  * Inspired by gatsby remark prism - https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs/
  * 1. Make the element just wide enough to fit its content.

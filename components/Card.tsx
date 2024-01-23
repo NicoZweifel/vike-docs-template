@@ -60,7 +60,7 @@ export const Card = ({
         className
       )}
     >
-      {x.icon}
+      <div className={'inline-block'}>{x.icon}</div>
       {children}
     </div>
   );

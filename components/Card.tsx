@@ -55,7 +55,7 @@ export const Card = ({
     <div
       {...p}
       className={cn(
-        'flex flex-row gap-4 border px-4 py-4 rounded place-items-center text-neutral-900/60 dark:text-neutral-400/80',
+        'flex flex-row gap-4 border px-4 py-4 rounded place-items-center text-neutral-900/90 dark:text-neutral-400/90',
         x.className,
         className
       )}

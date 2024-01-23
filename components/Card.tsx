@@ -47,7 +47,7 @@ export const Card = ({
       break;
     default:
       x = {
-        className: 'bg-neutral-500/10 border-neutral-500/10',
+        className: 'bg-neutral-500/20 border-neutral-500/20',
       };
       break;
   }

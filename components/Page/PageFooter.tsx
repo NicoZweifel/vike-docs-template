@@ -24,7 +24,7 @@ export const PageFooter = ({
       <div className={'flex flex-row grow justify-evenly gap-4'}>
         <Card
           className={
-            'grow cursor-pointer hover:bg-neutral-400/10 hover:border-neutral-400/10'
+            'grow cursor-pointer hover:bg-neutral-200/10 hover:border-neutral-400/10'
           }
         >
           <ChevronLeft />
@@ -32,7 +32,7 @@ export const PageFooter = ({
         </Card>
         <Card
           className={
-            'grow cursor-pointer flex flex-row gap-2 justify-end hover:bg-neutral-400/10 hover:border-neutral-400/10'
+            'grow cursor-pointer flex flex-row gap-2 justify-end hover:bg-neutral-200/10 hover:border-neutral-400/10'
           }
         >
           Next

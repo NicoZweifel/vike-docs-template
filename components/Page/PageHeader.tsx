@@ -38,7 +38,7 @@ export function PageHeader({
         })}
       </div>
       <p className={'font-bold text-4xl'}>{frontmatter.title}</p>
-      {frontmatter.description && (
+      {frontmatter.descriptionCode && (
         <Description
           components={{
             a: (p) => <LinkButton {...p} />,

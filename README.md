@@ -19,6 +19,7 @@ A simple template to easily deploy [`MDX`](https://mdxjs.com/) files.
 - 100% static output, resulting in an easy and blazingly fast [Deployment](https://vike-docs-template.nicozweifel.com/deploy) to [`GitHub Pages`](https://pages.github.com/), [`Cloudflare Pages`](https://pages.cloudflare.com/), [`Netlify`](https://www.netlify.com/), [`AWS`](https://aws.amazon.com/) and many [other hosting providers](https://vike.dev/github-pages).
 - Full support for custom components and snippets. Import anything in your documents, all files will be bundled in parallel with [`mdx-bundler`](https://github.com/kentcdodds/mdx-bundler) and [`esbuild`](https://esbuild.github.io/).
 - Unopinionated styling. Easily add [Global CSS](https://vike-docs-template.nicozweifel.com/customization/UI/styling#global-css), a custom [`tailwind`](https://vike-docs-template.nicozweifel.com/customization/UI/styling#tailwind) config or other [styling solutions](https://vike-docs-template.nicozweifel.com/customization/UI/styling).
+- Fully Functional responsive layout and [`neutral`](https://tailwindcss.com/docs/customizing-colors) color styling out of the box.
 - No bloat - just the basics with a focus on only adding light-weight dependencies.
 - Easy to add analytics, search or other third party implementations.
 - Uses [`vike`](https://vike.dev/) + [`preact`](https://preactjs.com/) for a small client bundle size (~45kb zipped).

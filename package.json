@@ -33,10 +33,10 @@
     "remark-frontmatter": "^5.0.0",
     "remark-gfm": "^4.0.0",
     "remark-mdx-frontmatter": "^4.0.0",
-    "unified": "^11.0.4",
-    "glob": "^10.3.10"
+    "unified": "^11.0.4"
   },
   "devDependencies": {
+    "glob": "^10.3.10",
     "@preact/preset-vite": "^2.8.1",
     "@testing-library/jest-dom": "^6.2.1",
     "@testing-library/preact": "^3.2.3",

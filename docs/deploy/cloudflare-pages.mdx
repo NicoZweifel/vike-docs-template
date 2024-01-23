@@ -19,7 +19,11 @@ To deploy to [`Cloudflare Pages`](https://pages.cloudflare.com/), connect your `
 
 The `Cloudflare` build configuration section should look like this:
 
-<Image src={'/cloudflare_pages_settings.png'} />
+<Image
+  priority
+  alt="Cloudflare pages settings"
+  src={'/cloudflare_pages_settings.png'}
+/>
 
 `pnpm` is used in this project, so we'll have to bypass `npm i` on `Cloudflare` by setting an environment variable in the pages project:
 

@@ -27,7 +27,7 @@ SOFTWARE.
 module.exports = {
   parser: '@typescript-eslint/parser',
   root: true,
-  ignorePatterns: ['dist/**/*'],
+  ignorePatterns: ['dist/**/*', 'node_modules'],
 
   // We don't use plugin:react/recommended here to avoid React-specific rules.
   extends: [

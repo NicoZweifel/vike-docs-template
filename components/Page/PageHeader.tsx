@@ -12,7 +12,7 @@ export function PageHeader({
     pageProps: { frontmatter },
   } = usePageContext();
   const path = frontmatter.path.split('/').filter((x) => x.length > 0);
-  const Component =
+  const Description =
     frontmatter.descriptionCode && getMDXComponent(frontmatter.descriptionCode);
 
   let basePath = '';
@@ -39,7 +39,7 @@ export function PageHeader({
       </div>
       <p className={'font-bold text-4xl'}>{frontmatter.title}</p>
       {frontmatter.description && (
-        <Component
+        <Description
           components={{
             a: (p) => <LinkButton {...p} />,
             p: ({ className, ...p }) => (

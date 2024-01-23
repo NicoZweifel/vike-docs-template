@@ -10,15 +10,16 @@ import { cn } from '../utils/cn';
 export const Card = ({
   children,
   variant,
+  className,
   ...p
 }: ComponentProps<'div'> & {
-  variant: 'success' | 'warning' | 'info' | 'error';
+  variant?: 'success' | 'warning' | 'info' | 'error';
 }) => {
   const size = 24;
   let x: {
     className?: string;
     icon?: VNode;
-  } = {};
+  };
   switch (variant) {
     case 'success':
       x = {
@@ -44,23 +45,23 @@ export const Card = ({
         icon: <XCircle size={size} />,
       };
       break;
+    default:
+      x = {
+        className: 'bg-neutral-500/10 border-neutral-500/10',
+      };
+      break;
   }
   return (
     <div
       {...p}
       className={cn(
-        'flex text-neutral-950/95 dark:text-neutral-200/80 flex-row gap-4 border p-3 rounded bg-red-300/10 border-red-500/10 place-items-center',
-        x.className
+        'flex flex-row gap-4 border px-4 py-4 rounded place-items-center text-neutral-900/60 dark:text-neutral-400/80',
+        x.className,
+        className
       )}
     >
-      <div
-        className={
-          'flex min-h-10 place-items-center text-neutral-900/60 dark:text-neutral-400/80'
-        }
-      >
-        {x.icon}
-      </div>
-      <p>{children}</p>
+      {x.icon}
+      {children}
     </div>
   );
 };

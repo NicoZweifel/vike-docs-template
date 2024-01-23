@@ -28,14 +28,14 @@ export const PageFooter = ({
           }
         >
           <ChevronLeft />
-          Next
+          Previous
         </Card>
         <Card
           className={
             'grow cursor-pointer flex flex-row gap-2 justify-end hover:bg-neutral-400/10 hover:border-neutral-400/10'
           }
         >
-          Previous
+          Next
           <ChevronRight />
         </Card>
       </div>

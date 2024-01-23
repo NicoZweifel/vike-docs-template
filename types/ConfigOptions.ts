@@ -1,5 +1,4 @@
 export type ConfigOptions = {
-  useGroups: boolean;
   name: string;
   license: string;
   repository: string;

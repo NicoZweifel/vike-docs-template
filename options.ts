@@ -7,7 +7,6 @@ import { Options } from './services';
 import packageJsonFile from './package.json';
 
 const options: Options = {
-  useGroups: true,
   baseRoute: '/',
   name: packageJsonFile.name,
   repository: packageJsonFile.repository,

@@ -7,11 +7,11 @@ import { Options } from './services';
 import packageJsonFile from './package.json';
 
 const options: Options = {
-  baseRoute: '/',
   name: packageJsonFile.name,
   repository: packageJsonFile.repository,
   license: packageJsonFile.license,
   author: packageJsonFile.author,
+  baseRoute: '/',
   logo: '/vite.svg',
   pattern: '**/*.mdx',
   cwd: '/docs',

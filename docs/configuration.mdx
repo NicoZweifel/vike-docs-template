@@ -7,17 +7,43 @@ Configuration can be done through options or by adding or customizing styles, co
 
 ## Options
 
-Configure the name, repository and other options like `rehype`/`remark` plugins.
-For convenience, you can re-use the fields in `package.json`, if they are defined.
+Configure the `name`, `repository`, `cwd`, `pattern` and other options like `rehype`/`remark` plugins.
 
-```ts {4-6} showLineNumbers
+<Info>
+  For convenience, you can re-use the fields in `package.json`, if they are
+  defined.
+</Info>
+
+```ts {4-5,18-26,11-12} showLineNumbers
 import packageJsonFile from './package.json';
 
 const options: BundleMDXOptions = {
   name: packageJsonFile.name,
   repository: packageJsonFile.repository,
-  license: packageJsonFile.license,
   // other options
+  license: packageJsonFile.license,
+  author: packageJsonFile.author,
+  baseRoute: '/',
+  logo: '/vite.svg',
+  pattern: '**/*.mdx',
+  cwd: '/docs',
+  toc: true,
+  mdxBundlerOptions: {
+    mdxOptions: {
+      jsxImportSource: 'preact',
+      // rehype/remark plugins...
+      remarkPlugins: [remarkGfm, remarkFrontmatter, remarkMdxFrontmatter],
+      rehypePlugins: [
+        [
+          rehypePrism,
+          {
+            defaultLanguage: 'bash',
+          },
+        ],
+        rehypeSlug,
+      ],
+    },
+  },
 };
 
 export default options;

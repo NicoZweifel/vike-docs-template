@@ -21,9 +21,7 @@ export const PageLayout = ({
           scrollbarGutter: 'stable',
           maxHeight: `calc(100vh - 2.75rem)`,
         }}
-        className={
-          'sticky top-11 shrink-0 overflow-y-auto hidden lg:flex border-r border-neutral-300/40 dark:border-neutral-800/40'
-        }
+        className={'sticky top-11 shrink-0 overflow-y-auto hidden lg:flex'}
       />
       <article
         {...props}
@@ -38,9 +36,7 @@ export const PageLayout = ({
           scrollbarGutter: 'stable',
           maxHeight: `calc(100vh - 2.75rem)`,
         }}
-        className={
-          'sticky top-11 shrink-0 overflow-x-hidden overflow-y-auto hidden sm:flex border-l border-neutral-300/40 dark:border-neutral-800/40'
-        }
+        className={`sticky top-11 shrink-0 overflow-x-hidden overflow-y-auto hidden sm:flex`}
       />
     </div>
   );

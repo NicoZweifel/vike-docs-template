@@ -20,7 +20,13 @@ export function TableOfContents({
   }));
 
   return (
-    <nav {...props} className={cn('flex px-2 py-4 flex-col gap-1', className)}>
+    <nav
+      {...props}
+      className={cn(
+        `${components.length > 0 ? 'border-l' : 'border-none'} border-neutral-300/40 dark:border-neutral-800/40 px-2 py-4 flex-col gap-1`,
+        className
+      )}
+    >
       {components.length > 0 && (
         <div className={'flex flex-row items-center gap-1'}>
           <List size={16} />

@@ -1,10 +1,5 @@
 import { ComponentProps, VNode } from 'preact';
-import {
-  AlertTriangle,
-  CheckSquare,
-  Info as InfoIcon,
-  XCircle,
-} from 'react-feather';
+import { AlertTriangle, Check, Info as InfoIcon, X } from 'react-feather';
 import { cn } from '../utils/cn';
 
 export const Card = ({
@@ -15,7 +10,7 @@ export const Card = ({
 }: ComponentProps<'div'> & {
   variant?: 'success' | 'warning' | 'info' | 'error';
 }) => {
-  const size = 24;
+  const size = 22;
   let x: {
     className?: string;
     icon?: VNode;
@@ -25,7 +20,7 @@ export const Card = ({
       x = {
         className:
           'text-green-800/90 dark:text-green-300/90 bg-green-300/10 border-green-500/10',
-        icon: <CheckSquare size={size} />,
+        icon: <Check size={size} />,
       };
       break;
     case 'warning':
@@ -46,7 +41,7 @@ export const Card = ({
       x = {
         className:
           'text-red-700/90 dark:text-red-400/90 bg-red-300/10 border-red-500/10',
-        icon: <XCircle size={size} />,
+        icon: <X size={size} />,
       };
       break;
     default:

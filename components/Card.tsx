@@ -10,7 +10,7 @@ export const Card = ({
 }: ComponentProps<'div'> & {
   variant?: 'success' | 'warning' | 'info' | 'error';
 }) => {
-  const size = children instanceof Array && children.length > 1 ? 34 : 22;
+  const size = children instanceof Array && children.length > 1 ? 26 : 22;
   let x: {
     className?: string;
     icon?: VNode;

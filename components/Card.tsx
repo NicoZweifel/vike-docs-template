@@ -10,7 +10,7 @@ export const Card = ({
 }: ComponentProps<'div'> & {
   variant?: 'success' | 'warning' | 'info' | 'error';
 }) => {
-  const size = 22;
+  const size = children instanceof Array && children.length > 1 ? 34 : 22;
   let x: {
     className?: string;
     icon?: VNode;
@@ -55,13 +55,13 @@ export const Card = ({
     <div
       {...p}
       className={cn(
-        'flex flex-row gap-4 border px-4 py-4 rounded place-items-center',
+        'flex flex-row gap-4 border px-4 py-4 my-2 rounded place-items-center',
         x.className,
         className
       )}
     >
       <div className={'inline-block'}>{x.icon}</div>
-      {children}
+      <div className={'flex flex-col'}>{children}</div>
     </div>
   );
 };

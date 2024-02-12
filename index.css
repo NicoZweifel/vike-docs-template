@@ -52,8 +52,18 @@
   border-radius: 8px;
 }
 
-pre {
-  overflow-x: auto;
+pre::-webkit-scrollbar-track {
+  background: theme('colors.neutral.950');
+  border: none;
+}
+
+pre::-webkit-scrollbar-thumb {
+  background: theme('colors.neutral.900');
+  border: none;
+}
+
+pre::-webkit-scrollbar-thumb:hover {
+  background: theme('colors.neutral.800');
 }
 
 /**

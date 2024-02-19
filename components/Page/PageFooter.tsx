@@ -37,7 +37,7 @@ export const PageFooter = ({
           <LinkButton
             aria-label={'Edit Page button'}
             hideExternalIcon
-            href={`${repository}/blob/main${frontmatter.cwd}/${frontmatter.file}`}
+            href={`${repository}/blob/main/docs${frontmatter.cwd}/${frontmatter.file}`}
             className={'flex flex-row gap-1 items-center'}
           >
             <GitHub size={14} /> Edit page

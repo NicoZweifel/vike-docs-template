@@ -1,13 +1,13 @@
 import path from 'path';
 import fs from 'fs';
+import { FrontmatterProcessor } from 'mdx-butler';
+import { Frontmatter } from '../types/Frontmatter';
+import { Options } from '../services';
 
-export const frontmatterProcessor = (
-  cwd: string,
-  file: string,
-  baseRoute: string,
-  // eslint-disable-next-line
-  frontmatter: Record<string, any>
-) => {
+export const frontmatterProcessor: FrontmatterProcessor<
+  Frontmatter,
+  Options & { route?: string }
+> = ({ file, cwd, basePath, route, frontmatter }) => {
   const absoluteCwd = path.join(process.cwd(), cwd);
 
   const filePath = path.join(absoluteCwd, file);
@@ -16,13 +16,13 @@ export const frontmatterProcessor = (
 
   const fileName = name.split('/').slice(-1)[0];
 
-  if (baseRoute === '/') baseRoute = '';
+  if (basePath === '/') basePath = '';
 
   frontmatter.cwd = cwd;
   frontmatter.title =
     frontmatter.title ?? fileName.charAt(0).toUpperCase() + fileName.slice(1);
   frontmatter.file = file;
-  frontmatter.route = `${baseRoute}/${frontmatter.route && frontmatter.route.startsWith('/') ? frontmatter.route.slice(1) : frontmatter.route ?? `${name}`}`;
+  frontmatter.route = `${basePath}/${frontmatter.route && frontmatter.route.startsWith('/') ? frontmatter.route.slice(1) : frontmatter.route ?? `${name}`}`;
 
   if ((frontmatter.route?.length ?? 0) === 0) frontmatter.route = '/';
 
@@ -30,7 +30,6 @@ export const frontmatterProcessor = (
 
   if ((frontmatter.path?.length ?? 0) === 0) frontmatter.path = '/';
 
-  frontmatter.headings = [];
   frontmatter.lastEdited = fs.statSync(filePath).mtime.toDateString();
 
   const p = frontmatter.path.split('/').slice(-1)[0];
@@ -48,4 +47,10 @@ export const frontmatterProcessor = (
     frontmatter.index = true;
     frontmatter.title = p.charAt(0).toUpperCase() + p.slice(1);
   }
+
+  return (
+    route == undefined ||
+    route.toLowerCase() === frontmatter.route.toLowerCase() ||
+    route.toLowerCase() === frontmatter.path.toLowerCase()
+  );
 };

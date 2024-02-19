@@ -1,4 +1,6 @@
-export const sortProvider = <T extends { frontmatter: Record<string, string> }>(
+import { Frontmatter } from '../types/Frontmatter';
+
+export const sortProvider = <T extends { frontmatter: Frontmatter }>(
   pages: T[]
 ) => {
   return pages.sort((a, b) => {

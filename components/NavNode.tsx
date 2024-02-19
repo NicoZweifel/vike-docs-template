@@ -12,13 +12,13 @@ type NavNodeProps = {
 
 const useNavNode = ({ node, flex }: NavNodeProps) => {
   const {
-    pageProps: { baseRoute },
+    pageProps: { basePath },
   } = usePageContext();
 
   const { children, path, navItems } = node;
 
   return useMemo(() => {
-    const isBaseRoute = (path.length === 0 ? '/' : path) === baseRoute;
+    const isBaseRoute = (path.length === 0 ? '/' : path) === basePath;
     const childNodes = children
       .filter((x) => x.navItems.length > 0)
       .map((x) => (
@@ -56,7 +56,7 @@ const useNavNode = ({ node, flex }: NavNodeProps) => {
       content,
       path,
     };
-  }, [baseRoute, children, flex, navItems, path]);
+  }, [basePath, children, flex, navItems, path]);
 };
 
 export const NavNode = ({

@@ -3,13 +3,14 @@ import { DarkModeToggle } from './DarkModeToggle';
 import { ComponentProps } from 'preact';
 import { cn } from '../utils/cn';
 import { Image } from '@unpic/preact';
-import { Menu } from 'react-feather';
+import { GitHub, Menu } from 'react-feather';
 import { NavNode } from './NavNode';
 import { useSignal } from '@preact/signals';
+import { LinkButton } from './LinkButton';
 
 export function Header({ className, ...props }: ComponentProps<'header'>) {
   const {
-    pageProps: { name, logo, navTree },
+    pageProps: { name, repository, logo, navTree },
   } = usePageContext();
   const expanded = useSignal(false);
   return (
@@ -42,7 +43,21 @@ export function Header({ className, ...props }: ComponentProps<'header'>) {
               </p>
             </div>
           </a>
-          <div className={'flex flex-row gap-2'}>
+          <div className={'flex flex-row gap-2 '}>
+            <div className={'flex place-items-center'}>
+              <LinkButton
+                className={
+                  'px-0.5 py-1 grow rounded-xl hover:bg-neutral-200/80 dark:hover:bg-neutral-800/60 dark:hover:text-neutral-30 text-neutral-600 hover:text-neutral-900 dark:hover:text-neutral-300 dark:text-neutral-100 '
+                }
+                id={'github_button'}
+                name={'Repository Button'}
+                aria-label={'Navigate to repository'}
+                hideExternalIcon
+                href={repository}
+              >
+                <GitHub size={18} />
+              </LinkButton>
+            </div>
             <DarkModeToggle />
             <button
               onClick={() => (expanded.value = !expanded.value)}
@@ -56,7 +71,7 @@ export function Header({ className, ...props }: ComponentProps<'header'>) {
           </div>
         </div>
         <div
-          className={`flex-row gap-4 ${expanded.value ? 'flex lg:hidden' : 'hidden'} pt-2 border-t border-neutral-300/40 dark:border-neutral-800/40 `}
+          className={`flex-row overflow-auto gap-4 ${expanded.value ? 'flex lg:hidden' : 'hidden'} pt-2 border-t border-neutral-300/40 dark:border-neutral-800/40 `}
         >
           {navTree?.[0] && <NavNode flex={'row'} node={navTree[0]} />}
         </div>

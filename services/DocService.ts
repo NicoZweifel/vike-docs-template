@@ -13,7 +13,7 @@ export type MDXOptions = Parameters<
   Parameters<typeof bundleMDX>[0]['mdxOptions']
 >[0];
 
-export type DocServiceOptions = Pick<ConfigOptions, 'baseRoute'> & {
+export type DocServiceOptions = Pick<ConfigOptions, 'basePath'> & {
   pattern: string;
   cwd: string;
   toc: boolean;
@@ -66,7 +66,7 @@ export class DocService implements IDocService {
       toc,
       frontmatterProcessor,
       tocPlugin,
-      baseRoute,
+      basePath,
       route,
     } = options;
 
@@ -86,7 +86,7 @@ export class DocService implements IDocService {
             file: filePath,
             cwd,
             mdxOptions: (processorOptions, frontmatter) => {
-              frontmatterProcessor?.(options.cwd, file, baseRoute, frontmatter);
+              frontmatterProcessor?.(options.cwd, file, basePath, frontmatter);
               if (
                 route &&
                 route.toLowerCase() !== frontmatter.route.toLowerCase() &&

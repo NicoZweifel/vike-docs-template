@@ -1,5 +1,11 @@
 import { ComponentProps, VNode } from 'preact';
-import { AlertTriangle, Check, Info as InfoIcon, X } from 'react-feather';
+import {
+  AlertTriangle,
+  Check,
+  ChevronRight,
+  Info as InfoIcon,
+  X,
+} from 'react-feather';
 import { cn } from '../utils/cn';
 
 export const Card = ({
@@ -10,7 +16,7 @@ export const Card = ({
 }: ComponentProps<'div'> & {
   variant?: 'success' | 'warning' | 'info' | 'error';
 }) => {
-  const size = children instanceof Array && children.length > 1 ? 26 : 22;
+  const size = children instanceof Array && children.length > 1 ? 28 : 22;
   let x: {
     className?: string;
     icon?: VNode;
@@ -26,7 +32,7 @@ export const Card = ({
     case 'warning':
       x = {
         className:
-          'text-amber-400/90 dark:text-amber-300/80 bg-amber-300/10 border-amber-500/10',
+          'text-amber-700/90 dark:text-amber-300/80 bg-amber-300/10 border-amber-500/10',
         icon: <AlertTriangle size={size} />,
       };
       break;
@@ -47,7 +53,8 @@ export const Card = ({
     default:
       x = {
         className:
-          'bg-neutral-500/20 border-neutral-500/20 text-neutral-950/80 dark:text-neutral-100/40 ',
+          'bg-neutral-300/20 hover:bg-neutral-400/20 dark:bg-neutral-500/20 dark:hover:bg-neutral-400/20 border-neutral-500/20 text-neutral-800/80 hover:text-neutral-950/80 dark:text-neutral-100/80 dark:hover:text-neutral-100',
+        icon: <ChevronRight size={size} />,
       };
       break;
   }

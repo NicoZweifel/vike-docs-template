@@ -34,4 +34,5 @@ type PageProps = {
   frontmatter: Frontmatter;
   navItems: NavItem[];
   navTree: NavTreeNode[];
+  headings: DocHeading[];
 } & ConfigOptions;

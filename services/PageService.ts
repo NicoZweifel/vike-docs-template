@@ -1,7 +1,9 @@
 import { ConfigOptions, NavItem } from '../types';
-import { IDocService } from './DocService';
 import { NavTreeNode } from '../types/NavTreeNode';
 import { bundleMDX } from 'mdx-bundler';
+import { IMDXBundlerService } from 'mdx-butler';
+import { Frontmatter } from '../types/Frontmatter';
+import { Options } from './index';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type NavGenerator = (frontMatter: Record<string, any>[]) => {
@@ -10,7 +12,7 @@ export type NavGenerator = (frontMatter: Record<string, any>[]) => {
 };
 
 export type PageServiceOptions = ConfigOptions & {
-  docService: IDocService;
+  mdxBundlerService: IMDXBundlerService<Frontmatter, Options>;
   navGenerator: NavGenerator;
   route?: string;
   isApi?: boolean;
@@ -21,14 +23,14 @@ export class PageService {
 
   async getPages(opts?: Partial<PageServiceOptions>) {
     const {
-      docService,
+      mdxBundlerService,
       navGenerator,
       name,
       license,
       repository,
       logo,
       author,
-      baseRoute,
+      basePath,
       isApi,
       route,
     } = { ...this.options, ...opts };
@@ -40,11 +42,11 @@ export class PageService {
       logo,
       author,
       route,
-      baseRoute,
+      basePath,
       isApi,
     };
 
-    if (route != undefined && !route.startsWith(baseRoute)) {
+    if (route != undefined && !route.startsWith(basePath)) {
       return [
         {
           pageContext: {
@@ -54,7 +56,7 @@ export class PageService {
       ];
     }
 
-    const docs = await docService.getDocs();
+    const docs = await mdxBundlerService.docs();
 
     await Promise.all(
       docs.map(async (x) => {

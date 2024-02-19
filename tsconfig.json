@@ -12,9 +12,9 @@
     "lib": ["ES2021", "ESNext"],
     "paths": {
       "react": ["./node_modules/preact/compat/"],
-      "react-dom": ["./node_modules/preact/compat/"]
-    }
+      "react-dom": ["./node_modules/preact/compat/"],
+    },
   },
   "include": ["node_modules/vite/client.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules/*", "dist"]
+  "exclude": ["node_modules/*", "dist"],
 }

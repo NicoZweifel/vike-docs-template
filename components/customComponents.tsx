@@ -13,6 +13,7 @@ export const Info = (p: ActionCardProps) => <Card {...p} variant={'info'} />;
 export const Error = (p: ActionCardProps) => <Card {...p} variant={'error'} />;
 
 export const customComponents = {
+  Card,
   Success,
   Warning,
   Info,

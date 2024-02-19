@@ -8,7 +8,6 @@ const defaultValues = {
   lastEdited: '',
   file: '',
   cwd: '',
-  headings: [],
   hidden: false,
 };
 

@@ -6,14 +6,13 @@ import { NavItem } from '../types';
 export const navGenerator = (frontMatter: Frontmatter[]) => {
   const navItems = frontMatter
     .filter((x) => x.hidden !== true)
-    .map(({ title, route, path, file, cwd, lastEdited, headings, hidden }) => ({
+    .map(({ title, route, path, file, cwd, lastEdited, hidden }) => ({
       title,
       route,
       path,
       file,
       cwd,
       lastEdited,
-      headings,
       hidden,
     }));
 

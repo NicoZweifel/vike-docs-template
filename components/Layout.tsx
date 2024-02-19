@@ -1,5 +1,4 @@
 import '../index.css';
-import 'prism-themes/themes/prism-vsc-dark-plus.css';
 
 import { VNode } from 'preact';
 import { Header, Footer } from './index';

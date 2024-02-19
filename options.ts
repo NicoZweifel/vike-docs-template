@@ -11,11 +11,10 @@ const options: Options = {
   repository: packageJsonFile.repository,
   license: packageJsonFile.license,
   author: packageJsonFile.author,
-  baseRoute: '/',
+  basePath: '/',
   logo: '/vite.svg',
   pattern: '**/*.mdx',
   cwd: '/docs',
-  toc: true,
   mdxBundlerOptions: {
     mdxOptions: {
       jsxImportSource: 'preact',

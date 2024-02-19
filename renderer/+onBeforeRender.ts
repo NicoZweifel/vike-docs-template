@@ -2,11 +2,12 @@ import { PageContext } from 'vike/types';
 
 import options from '../options';
 
-import { DocService, PageService } from '../services';
+import { Options, PageService } from '../services';
 import { frontmatterProcessor } from '../utils/frontmatterProcessor';
-import { tocPlugin } from '../utils/tocPlugin';
 import { navGenerator } from '../utils/navGenerator';
 import { sortProvider } from '../utils/sortProvider';
+import { MDXBundlerService } from 'mdx-butler';
+import { Frontmatter } from '../types/Frontmatter';
 
 export { onBeforeRender };
 
@@ -16,8 +17,10 @@ async function onBeforeRender(pageContext: PageContext) {
     route: pageContext.urlPathname,
   };
 
-  const docService = new DocService({
-    tocPlugin,
+  const docService = MDXBundlerService.create<
+    Frontmatter,
+    Options & { route?: string }
+  >({
     frontmatterProcessor,
     sortProvider,
     ...opts,
@@ -26,7 +29,7 @@ async function onBeforeRender(pageContext: PageContext) {
   const pageService = new PageService({
     navGenerator,
     ...opts,
-    docService,
+    mdxBundlerService: docService,
   });
 
   return (await pageService.getPages())[0];

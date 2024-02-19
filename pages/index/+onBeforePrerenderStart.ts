@@ -1,16 +1,16 @@
 import options from '../../options';
 
-import { DocService, PageService } from '../../services';
+import { Options, PageService } from '../../services';
 import { frontmatterProcessor } from '../../utils/frontmatterProcessor';
-import { tocPlugin } from '../../utils/tocPlugin';
 import { navGenerator } from '../../utils/navGenerator';
 import { sortProvider } from '../../utils/sortProvider';
+import { MDXBundlerService } from 'mdx-butler';
+import { Frontmatter } from '../../types/Frontmatter';
 
 export { onBeforePrerenderStart };
 
 async function onBeforePrerenderStart() {
-  const docService = new DocService({
-    tocPlugin,
+  const mdxBundlerService = MDXBundlerService.create<Frontmatter, Options>({
     sortProvider,
     frontmatterProcessor,
     ...options,
@@ -19,7 +19,7 @@ async function onBeforePrerenderStart() {
   const pageService = new PageService({
     navGenerator,
     ...options,
-    docService,
+    mdxBundlerService,
   });
 
   return pageService.getPages();

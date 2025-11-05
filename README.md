@@ -12,7 +12,7 @@ A simple template to easily deploy [`MDX`](https://mdxjs.com/) files.
 
 ## Notes
 
-- Uses [`mdx-butler`]([https://mdx-butler.com](https://github.com/NicoZweifel/mdx-butler))
+- Uses [`mdx-butler`](https://github.com/NicoZweifel/mdx-butler)
 - Author mdx files in a `docs` folder or with [any file pattern](https://vike-docs-template.nicozweifel.com/configuration#options).
 - File and frontmatter based routing
 - A Perfect lighthouse score.

@@ -46,7 +46,7 @@
     "husky": "^8.0.3",
     "lint-staged": "^15.5.2",
     "mdx-bundler": "^10.1.1",
-    "mdx-butler": "^0.5.7",
+    "mdx-butler": "^0.5.8",
     "preact-render-to-string": "^6.6.3",
     "prettier": "^3.7.3",
     "prism-themes": "^1.9.0",

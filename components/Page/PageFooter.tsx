@@ -1,8 +1,9 @@
 import { usePageContext } from '../../context/PageContext';
 import { LinkButton } from '../LinkButton';
-import { GitHub } from 'react-feather';
+import { ChevronLeft, ChevronRight, GitHub } from 'react-feather';
 import { ComponentProps } from 'preact';
 import { cn } from '../../utils/cn';
+import { Card } from '../Card';
 
 export const PageFooter = ({
   className,
@@ -20,6 +21,24 @@ export const PageFooter = ({
         className
       )}
     >
+      <div className={'flex flex-row grow justify-evenly gap-4'}>
+        <Card
+          className={
+            'grow cursor-pointer hover:bg-neutral-200/10 hover:border-neutral-400/10'
+          }
+        >
+          <ChevronLeft />
+          Previous
+        </Card>
+        <Card
+          className={
+            'grow cursor-pointer flex flex-row gap-2 justify-end hover:bg-neutral-200/10 hover:border-neutral-400/10'
+          }
+        >
+          Next
+          <ChevronRight />
+        </Card>
+      </div>
       <div className={'flex flex-row justify-between'}>
         <div className={'text-sm'}>
           <p className={'pl-1'}>Was this article helpful to you?</p>
